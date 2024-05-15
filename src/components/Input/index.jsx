@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const shapes = {
   square: "rounded-[0px]",
+  rounded: "rounded-xl",
 };
 const variants = {
   fill: {
@@ -32,9 +33,10 @@ const Input = React.forwardRef(
       variant = "fill",
       size = "sm",
       color = "",
+      icon = "",
       ...restProps
     },
-    ref,
+    ref
   ) => {
     const handleChange = (e) => {
       if (onChange) onChange(e?.target?.value);
@@ -43,16 +45,32 @@ const Input = React.forwardRef(
     return (
       <>
         <label
-          className={`${className} flex items-center justify-center cursor-text text-gray-500  ${(shape && shapes[shape]) || ""} ${variants[variant]?.[color] || variants[variant] || ""} ${sizes[size] || ""}`}
+          className={`${className} flex items-center justify-center cursor-text text-gray-500 relative ${
+            (shape && shapes[shape]) || ""
+          } ${variants[variant]?.[color] || variants[variant] || ""} ${
+            sizes[size] || ""
+          }`}
         >
           {!!label && label}
           {!!prefix && prefix}
-          <input ref={ref} type={type} name={name} onChange={handleChange} placeholder={placeholder} {...restProps} />
+          <input
+            ref={ref}
+            type={type}
+            name={name}
+            onChange={handleChange}
+            placeholder={placeholder}
+            {...restProps}
+          />
           {!!suffix && suffix}
+          {icon && (
+            <span className="absolute -translate-y-1/2 right-4 top-1/2">
+              {icon}
+            </span>
+          )}
         </label>
       </>
     );
-  },
+  }
 );
 
 Input.propTypes = {
