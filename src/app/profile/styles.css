@@ -3,6 +3,10 @@
 body {
   background-color: #e7ebf8;
 }
+.Wrapper {
+  max-width: 1200px; 
+  margin: 0 auto;
+}
 .parent {
   display: grid;
   grid-template-columns: repeat(40, 1fr);
@@ -10,7 +14,7 @@ body {
   grid-row-gap: 15px;
 }
 
-.div1 {
+.profileSection {
   background-color: #fff;
   grid-area: 1 / 1 / 41 / 5;
   width: 406.74px;
@@ -29,21 +33,21 @@ body {
   border-radius: 20px;
 }
 
-.div3 {
+.priceSection2 {
   background-color: #fff;
   grid-area: 1 / 11 / 12 / 15;
   height: 210.33px;
   border-radius: 20px;
 }
 
-.div4 {
+.priceSection3 {
   background-color: #fff;
   grid-area: 1 / 16 / 12 / 20;
   height: 210.33px;
   border-radius: 20px;
 }
 
-.div5 {
+.productBrands {
   background-color: #fff;
   grid-area: 13 / 6 / 24 / 13;
   display: flex;
@@ -51,13 +55,13 @@ body {
   border-radius: 20px;
 }
 
-.div6 {
+.promoProducts {
   background-color: #fff;
   grid-area: 13 / 13 / 24 / 20;
   border-radius: 20px;
 }
 
-.div7 {
+.productNotes {
   display: flex;
   height: 159px;
   width: 1050px;
@@ -70,8 +74,8 @@ body {
 }
 
 .priceSection,
-.div3,
-.div4 {
+.priceSection2,
+.priceSection3 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,3 +251,114 @@ ul li {
 .AdvBoxSection{
     padding: 20px;
 }
+
+/* Medium devices (tablets) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .priceSection,
+  .priceSection2,
+  .priceSection3,
+  .productBrands,
+  .promoProducts {
+    width: 405px;
+  }
+  .productNotes {
+    width: 405px;
+    height: 405px;
+  }
+  .ButtonBox {
+    font-size: 10px;
+  }
+}
+
+
+/* Small devices (phones) */
+@media (max-width: 575px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Add alignment for centering */
+  }
+  .profileSection,
+  .priceSection,
+  .priceSection2,
+  .priceSection3,
+  .productBrands,
+  .promoProducts,
+  .productNotes {
+    width: 100%; /* Adjust width to fill the container */
+    max-width: 500px; /* Limit the maximum width for better readability */
+  }
+  .ButtonBox {
+    font-size: 8px; /* Adjust font size for better display */
+  }
+  .StyleParagraph{
+    font-size: 10px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+  }
+  .profileSection {
+    width:600px; 
+  }
+  .priceSection,
+  .priceSection2,
+  .priceSection3,
+  .productBrands,
+  .promoProducts {
+    width: 100%; 
+    max-width: 400px; 
+  }
+  .productNotes {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+  }
+  .ButtonBox {
+    font-size: 10px;
+  }
+
+}
+
+/* Large devices (desktops or laptops) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+  }
+  .profileSection {
+    width: 100%; 
+    max-width: 600px;
+  }
+  .priceSection,
+  .priceSection2,
+  .priceSection3,
+  .productBrands,
+  .promoProducts {
+    width: 100%;
+    max-width: 600px; 
+  }
+  .productNotes {
+    width: 100%; 
+    max-width: 600px; 
+    height: auto;
+  }
+  .ButtonBox {
+    font-size: 12px;
+  }
+}
+

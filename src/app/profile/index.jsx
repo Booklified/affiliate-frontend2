@@ -10,7 +10,7 @@ import { Button, Heading, Img, SelectBox, Text } from "../../components";
 export default function WireframeBillingPayment1OnePage() {
   return (
     <Wrapper>
-      <div className="flex flex-1 flex-col items-end gap-[43px] md:self-stretch">
+      <div className="flex flex-1 flex-col items-end md:self-stretch">
       {/* <div className="flex w-[18%] items-center gap-[19px] md:w-full md:p-5">
           <Button shape="round" className="w-[51px] shadow-sm">
             <Img src="img_vector.svg" width={51} height={51} />
@@ -28,7 +28,7 @@ export default function WireframeBillingPayment1OnePage() {
         </div> */}
         <div className="flex w-full justify-center items-center p-10">
           <div className="parent">
-            <div className="div1">
+            <div className="profileSection">
               <div className="ProfileBox">
                 <div className="profile">
                   <img src="/images/user.png" />
@@ -68,7 +68,7 @@ export default function WireframeBillingPayment1OnePage() {
               </div>
             </div>
 
-            <div className="div3">
+            <div className="priceSection2">
             <div className="priceBox">
                 <p className="subHeading">Lifetime Sales</p>
                 <h2 className="heading">$25,000</h2>
@@ -78,7 +78,7 @@ export default function WireframeBillingPayment1OnePage() {
               </div>
             </div>
 
-            <div className="div4">
+            <div className="priceSection3">
             <div className="priceBox">
                 <p className="subHeading">Lifetime Sales</p>
                 <h2 className="heading">$25,000</h2>
@@ -88,7 +88,7 @@ export default function WireframeBillingPayment1OnePage() {
               </div>
             </div>
 
-            <div className="div5">
+            <div className="productBrands">
               <div className="AdvBoxSection">
               <div className="ButtonBox">
                 <p>1. ORCA Campaign Ad </p>
@@ -116,7 +116,7 @@ export default function WireframeBillingPayment1OnePage() {
               </div>
             </div>
 
-            <div className="div6">
+            <div className="promoProducts">
             <div className="AdvBoxSection">
             <div className="ButtonBox">
                 <p>1. ORCA Campaign Ad </p>
@@ -143,7 +143,7 @@ export default function WireframeBillingPayment1OnePage() {
                 </div>
               </div>
             </div>
-            <div className="div7">
+            <div className="productNotes">
               <p className="StyleParagraph">
                 Mauris non tincidunt arcu. Donec dapibus pretium sem, sagittis
                 sollicitudin odio interdum porta. Curabitur placerat viverra

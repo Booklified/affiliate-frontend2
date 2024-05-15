@@ -92,7 +92,7 @@ export default function WireframeAffiliatesOnePage() {
             as="p"
             className="!text-[13.69px] cursor-pointer"
             onClick={() => {
-              router.push("/wireframeaffiliatestwo");
+              router.push("/profile");
             }}
           >
             {info?.getValue?.()}
@@ -111,7 +111,7 @@ export default function WireframeAffiliatesOnePage() {
             as="p"
             className="!text-[13.69px] cursor-pointer"
             onClick={() => {
-              router.push("/wireframeaffiliatestwo");
+              router.push("/profile");
             }}
           >
             {info?.getValue?.()}
@@ -130,7 +130,7 @@ export default function WireframeAffiliatesOnePage() {
             as="p"
             className="!text-[13.69px] cursor-pointer"
             onClick={() => {
-              router.push("/wireframeaffiliatestwo");
+              router.push("/profile");
             }}
           >
             {info?.getValue?.()}
@@ -152,7 +152,7 @@ export default function WireframeAffiliatesOnePage() {
             as="p"
             className="!text-[13.69px] cursor-pointer"
             onClick={() => {
-              router.push("/wireframeaffiliatestwo");
+              router.push("/profile");
             }}
           >
             {info?.getValue?.()}
@@ -171,7 +171,7 @@ export default function WireframeAffiliatesOnePage() {
             as="p"
             className="!text-[13.69px] cursor-pointer"
             onClick={() => {
-              router.push("/wireframeaffiliatestwo");
+              router.push("/profile");
             }}
           >
             {info?.getValue?.()}
