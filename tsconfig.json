@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-  
- "src/service/employeesService.js", "src/app/_components/shared/imageWithFallBack.jsx", "src/auth.ts"  ],
+    "src/components",
+ "src/service/employeesService.js", "src/app/_components/shared/imageWithFallBack.jsx", "src/auth.ts", "src/app/products/index.js"  ],
   "exclude": ["node_modules"]
 }
