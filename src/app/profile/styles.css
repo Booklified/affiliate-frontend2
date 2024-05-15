@@ -1,0 +1,249 @@
+/* styles.css */
+
+body {
+  background-color: #e7ebf8;
+}
+.parent {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.div1 {
+  background-color: #fff;
+  grid-area: 1 / 1 / 41 / 5;
+  width: 406.74px;
+  height: 720.39px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.priceSection {
+  background-color: #fff;
+  grid-area: 1 / 6 / 12 / 10;
+  height: 210.33px;
+  border-radius: 20px;
+}
+
+.div3 {
+  background-color: #fff;
+  grid-area: 1 / 11 / 12 / 15;
+  height: 210.33px;
+  border-radius: 20px;
+}
+
+.div4 {
+  background-color: #fff;
+  grid-area: 1 / 16 / 12 / 20;
+  height: 210.33px;
+  border-radius: 20px;
+}
+
+.div5 {
+  background-color: #fff;
+  grid-area: 13 / 6 / 24 / 13;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.div6 {
+  background-color: #fff;
+  grid-area: 13 / 13 / 24 / 20;
+  border-radius: 20px;
+}
+
+.div7 {
+  display: flex;
+  height: 159px;
+  width: 1050px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  grid-area: 26 / 6 / 37 / 20;
+  border-radius: 20px;
+}
+
+.priceSection,
+.div3,
+.div4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: start;
+  padding: 10px;
+  border-radius: 20px;
+}
+.subHeading {
+  color: #8f8f8f;
+  font-weight: 400;
+  font-size: 22px;
+  font-family: "INTER";
+}
+.heading {
+  font-size: 49px;
+  font-weight: 700;
+  color: #030024;
+  font-family: "Inter";
+}
+.ButtonBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #8f8f8f;
+  font-size: 15px;
+}
+.TextSpan {
+  color: #fb7e10;
+}
+.FilledButton {
+  background: #fb7e10;
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 15px;
+  color: #fff;
+}
+.BorderButton {
+  color: #fb7e10;
+  border: 1px solo;
+  border: 1px solid #030024;
+  padding: 5px;
+  border-radius: 20px;
+}
+.StyleParagraph {
+  font-family: "Inter";
+  font-weight: 400;
+  padding: 10px;
+  font-size: 16px;
+  color: #8f8f8f;
+  padding: 20px;
+}
+/* styles.css */
+
+.ProfileBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile {
+  width: 206px;
+  height: 206px;
+  background-color: #030024; /* Adjust as needed */
+  border-radius: 50%;
+}
+.profileName {
+  color: #030024;
+  font-weight: 700;
+  font-size: 40px;
+  margin-top: 10;
+  margin-top: 10px;
+}
+
+.Social {
+  list-style-type: none;
+  font-size: 24px; /* Adjust as needed */
+}
+.SocialBox {
+  display: flex;
+  padding-top: 50px;
+}
+.SocialBox p{
+  /* background-color:#8F8F8F; */
+  margin-left: 10px;
+  /* color: #fff; */
+}
+.AddressBox {
+  padding: 40px;
+  color: #8f8f8f;
+}
+.addressIcon{
+  width: 210px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style-type: none;
+  font-size: 16px; /* Adjust as needed */
+}
+
+.Social {
+  list-style: none;
+  width: 30px;
+  height: 30px;
+}
+
+.PartnerShip {
+  width: 303px;
+  height: 104px;
+  background-color: #e7ebf8;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 20px;
+}
+.partnershipText {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "Inter";
+  color: #030024;
+}
+.partnerLogo {
+  width: 40px;
+  height: 40px;
+  border-radius:20px;
+  background-color: #ff3b2e;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.partenerImg{
+  width: 20px;
+  height: 20px;
+}
+
+.BottomContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.Entries {
+  margin-right: 20px;
+  color: #d8d8d8;
+}
+
+.Pagination {
+  display: flex;
+}
+
+.Pagination span {
+  margin-right: 10px;
+  height: 25px;
+  width: 25px;
+  padding: 5px auto;
+  text-align: center;
+  background: #d8d8d8;
+}
+/* Adv box Section */
+.AdvBoxSection{
+    padding: 20px;
+}
