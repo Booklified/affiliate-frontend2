@@ -49,7 +49,7 @@ export default function ReusableModal({
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel className="w-full relative max-w-[810px] p-6 rounded-3xl bg-white-A700 backdrop-blur-2xl">
+                <DialogPanel className="w-full relative max-w-[810px] p-6 rounded-3xl bg-white-A700 backdrop-blur-2xl shadow-xl border-2">
                   <DialogTitle
                     as="h3"
                     className="font-medium text-white text-base/7"
@@ -59,7 +59,12 @@ export default function ReusableModal({
                   <p className="text-[#8F8F8F] mt-2">{description}</p>
 
                   <div className="mt-4 border-t">{children}</div>
-                  <button className="absolute top-4 right-4">
+                  <button
+                    onClick={() => {
+                      setopen();
+                    }}
+                    className="absolute top-4 right-4"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

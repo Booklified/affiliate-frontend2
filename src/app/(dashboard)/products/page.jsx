@@ -1,5 +1,6 @@
 import React from "react";
 import Page from ".";
+import Header1 from "@/components/Header1";
 
 export const metadata = {
   title: "Toocan",
@@ -8,5 +9,10 @@ export const metadata = {
 };
 
 export default function WireframeProductsTwoPage() {
-  return <Page />;
+  return (
+    <div className="w-screen overflow-hidden md:w-full ">
+      <Header1 showNotification />
+      <Page />
+    </div>
+  );
 }

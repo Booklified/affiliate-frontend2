@@ -32,13 +32,29 @@ const Input = React.forwardRef(
       shape,
       variant = "fill",
       size = "sm",
-      color = "",
+      color = "indigo_50",
       icon = "",
       ...restProps
+    }: {
+      className?: string;
+      name?: string;
+      placeholder?: string;
+      type?: string;
+      children?: React.ReactNode;
+      label?: string;
+      prefix?: React.ReactNode;
+      suffix?: React.ReactNode;
+      onChange?: (value: string) => void;
+      shape?: "square" | "rounded";
+      variant?: "fill";
+      size?: "xs" | "md" | "sm";
+      color?: "indigo_50" | "white_A700";
+      icon?: React.ReactNode;
+      [x: string]: any;
     },
     ref
   ) => {
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (onChange) onChange(e?.target?.value);
     };
 
@@ -54,10 +70,12 @@ const Input = React.forwardRef(
           {!!label && label}
           {!!prefix && prefix}
           <input
-            ref={ref}
+            ref={ref as any}
             type={type}
             name={name}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+            }}
             placeholder={placeholder}
             {...restProps}
           />

@@ -9,6 +9,12 @@ const Img = ({
   alt = "testImg",
   isStatic = false,
   ...restProps
+}: {
+  className?: string;
+  src?: string;
+  alt?: string;
+  isStatic?: boolean;
+  [x: string]: any;
 }) => {
   const [imgSrc, setImgSrc] = React.useState(src);
 

@@ -98,3 +98,32 @@ table {
 }
 
 
+
+
+
+
+/* Inverted border */
+
+reverseBorder:before,
+reverseBorder:after
+{
+  content:'';
+  position:absolute;
+  top:0px;
+  height:38px;
+  width:62px;
+  box-shadow: 
+    0 0 0 500px orange,
+    inset -8px -8px  5px -5px
+    ;
+  border-radius:0 0 0.5em 0;
+     
+}
+reverseBorder:after {
+  right:0;
+  border-radius: 0 0 0 0.5em;
+    box-shadow: 
+    0 0 0 500px orange,
+    inset 8px -8px  5px -5px
+    ;
+}

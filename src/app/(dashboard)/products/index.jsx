@@ -2,26 +2,25 @@
 import Wrapper from "@/components/Wrapper";
 import { createColumnHelper } from "@tanstack/react-table";
 import React, { HTMLProps } from "react";
-import { CloseSVG, SearchSVG } from "../../assets/images";
-import { Button, Img, Input, SelectBox, Text } from "../../components";
-import { ReactTable } from "../../components/ReactTable";
+import { CloseSVG, SearchSVG } from "../../../assets/images";
+import { Button, Img, Input, SelectBox, Text } from "../../../components";
+import { ReactTable } from "../../../components/ReactTable";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  FilterFn,
   getFilteredRowModel,
   getSortedRowModel,
-  SortDirection,
 } from "@tanstack/react-table";
 import { Product, tableColumns } from "./productColumns";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 
-import WireframeProductsThree from "../../modals/WireframeProductsThree";
+import WireframeProductsThree from "../../../modals/WireframeProductsThree";
 import ReusableModal from "@/modals/headlessModals/reusableModal";
 import { AscSortIcon, DescSortIcon } from "@/assets/icons";
+import TablePagination from "@/components/shared/tablePagination";
 
 const data = [
   {
@@ -40,25 +39,101 @@ const data = [
     image: "img_user_indigo_50.svg",
     id: "2",
   },
-];
-
-const dropDownOptions = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const table2Data = [
   {
-    product:
-      "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
-    price: "$109.97",
-    commission: "20%",
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
   },
   {
-    product:
-      "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
-    price: "$319.99",
-    commission: "20%",
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 109.97,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "1",
+  },
+  {
+    name: "ORCA Bulk Flip Flops For Wedding Guests (WHITE) | 52 Pack Whitevv",
+    price: 319.99,
+    commission: 20,
+    sku: "B07XGMQ734",
+    image: "img_user_indigo_50.svg",
+    id: "2",
   },
 ];
 
@@ -66,112 +141,21 @@ export default function WireframeProductsTwoPage() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const [searchBarValue1, setSearchBarValue1] = React.useState("");
   const [rowSelection, setRowSelection] = React.useState({});
+  const page = parseInt(searchParams.get("page") || "1");
+  const limit = parseInt(searchParams.get("limit") || "10");
+
+  const getPagintedData = React.useMemo(() => {
+    const start = (page - 1) * limit;
+    const end = page * limit;
+    return data.slice(start, end);
+  }, [page, limit]);
 
   console.log("====row selection :", rowSelection);
-
-  const table2Columns = React.useMemo(() => {
-    const table2ColumnHelper = createColumnHelper();
-    return [
-      table2ColumnHelper.accessor(" ", {
-        cell: (info) => {
-          console.log("---info#", info);
-          const row = info.row;
-          return (
-            <div className="px-1">
-              <IndeterminateCheckbox
-                {...{
-                  checked: row.getIsSelected(),
-                  disabled: !row.getCanSelect(),
-                  indeterminate: row.getIsSomeSelected(),
-                  onChange: row.getToggleSelectedHandler(),
-                }}
-              />
-            </div>
-          );
-        },
-
-        header(props) {
-          console.log("---header check box props :", props);
-          const table = props?.table;
-          return (
-            <IndeterminateCheckbox
-              {...{
-                checked: table.getIsAllRowsSelected(),
-                indeterminate: table.getIsSomeRowsSelected(),
-                onChange: table.getToggleAllRowsSelectedHandler(),
-              }}
-            />
-          );
-        },
-      }),
-      table2ColumnHelper.accessor("product", {
-        cell: (info) => (
-          <div className="flex items-center justify-between gap-5 md:flex-col">
-            <div className="flex w-[8%] flex-col gap-[11px] md:w-full">
-              <Img
-                src="img_user_indigo_50.svg"
-                width={54}
-                height={56}
-                alt="user"
-                className="h-[56px]"
-              />
-            </div>
-            <div className="flex flex-col items-start">
-              <Text size="8xl" as="p" className="!text-indigo-300 underline">
-                {info?.getValue?.()}
-              </Text>
-              <Text size="3xl" as="p">
-                B07XGMQ734 - SILV LLC
-              </Text>
-            </div>
-          </div>
-        ),
-        header: (info) => (
-          <Text size="lg" as="p" className="py-px pl-[35px] sm:pl-5">
-            Product
-          </Text>
-        ),
-        meta: { width: "993px" },
-      }),
-      table2ColumnHelper.accessor("price", {
-        cell: (info) => (
-          <div className="ml-[168px] flex flex-col items-center gap-[42px] md:ml-0">
-            <Text size="8xl" as="p">
-              {info?.getValue?.()}
-            </Text>
-          </div>
-        ),
-        header: (info) => (
-          <Text size="lg" as="p" className="p-px">
-            Price
-          </Text>
-        ),
-        meta: { width: "231px" },
-      }),
-      table2ColumnHelper.accessor("commission", {
-        cell: (info) => (
-          <div className="flex flex-col items-center gap-[42px]">
-            <Text size="8xl" as="p">
-              {info?.getValue?.()}
-            </Text>
-          </div>
-        ),
-        header: (info) => (
-          <Text size="lg" as="p" className="p-px">
-            Commission
-          </Text>
-        ),
-        meta: { width: "228px" },
-      }),
-    ];
-  }, []);
-
   //------------------
 
   const table = useReactTable({
-    data: data,
+    data: getPagintedData,
     columns: tableColumns,
     getCoreRowModel: getCoreRowModel(),
 
@@ -185,10 +169,19 @@ export default function WireframeProductsTwoPage() {
     getSortedRowModel: getSortedRowModel(),
   });
 
-  console.log(rowSelection);
+  const handleCloseModal = () => {
+    if (searchParams.get("modal")) {
+      const current = new URLSearchParams(searchParams);
+      console.log(current);
+      current.delete("modal");
+      const search = current.toString();
+      const url = pathname + search ? `?${search}` : "";
+      router.push(url);
+    }
+  };
   return (
-    <Wrapper>
-      <div className="w-full pr-10 overflow-hidden">
+    <div className="w-full overflow-hidden">
+      <div className="w-full h-full px-4 overflow-hidden">
         <div className="mb-16">
           <ToolBar />
         </div>
@@ -262,175 +255,229 @@ export default function WireframeProductsTwoPage() {
               })}
             </tbody>
           </table>
-          <div className="flex w-[97%] flex-col gap-[18px] md:w-full">
-            <div className="h-px bg-blue_gray-100" />
-            <div className="flex items-center justify-between gap-5">
-              <Text
-                as="p"
-                className="self-start !text-[13.69px] !text-blue_gray-100"
-              >
-                Showing 1 of 5 entries
-              </Text>
-              <div className="flex w-[11%] items-center justify-center self-end">
-                <Img
-                  src="img_arrow_left.svg"
-                  width={16}
-                  height={16}
-                  alt="arrowleft"
-                  className="h-[16px] w-[16px] self-start"
-                />
-                <div className="ml-2 flex h-[16px] !w-[16px] flex-shrink-0  flex-col items-center self-start bg-[url(/images/img_group.svg)] bg-cover bg-no-repeat p-px md:h-auto">
-                  <Text size="md" as="p" className="!text-[11.06px]">
-                    1
-                  </Text>
-                </div>
-                <div className="ml-2 flex h-[16px] !w-[16px] flex-shrink-0  flex-col items-center self-start bg-[url(/images/img_group_blue_gray_100.svg)] bg-cover bg-no-repeat p-px md:h-auto">
-                  <Text size="md" as="p" className="!text-[11.06px]">
-                    2
-                  </Text>
-                </div>
-                <div className="ml-2 flex h-[16px] !w-[16px] flex-shrink-0  flex-col items-center self-start bg-[url(/images/img_group_blue_gray_100.svg)] bg-cover bg-no-repeat p-px md:h-auto">
-                  <Text size="md" as="p" className="!text-[11.06px]">
-                    3
-                  </Text>
-                </div>
-                <Text
-                  size="md"
-                  as="p"
-                  className="ml-[11px] self-end !text-[11.06px]"
-                >
-                  ...
-                </Text>
-                <div className="ml-[11px] flex h-[16px] !w-[16px] flex-shrink-0  flex-col items-center self-start bg-[url(/images/img_group_blue_gray_100.svg)] bg-cover bg-no-repeat p-px md:h-auto">
-                  <Text size="md" as="p" className="!text-[11.06px]">
-                    5
-                  </Text>
-                </div>
-                <Img
-                  src="img_clock_blue_gray_100.svg"
-                  width={16}
-                  height={16}
-                  alt="clock"
-                  className="ml-2 h-[16px] w-[16px] self-start"
-                />
-              </div>
-            </div>
-          </div>
+          <TablePagination siblings={3} total={data.length} />
         </div>
       </div>
-      <ReusableModal
-        isOpen={!!searchParams.get("modal")}
-        toggleOpen={() => {
-          console.log("toggle open");
-          if (searchParams.get("modal")) {
-            const current = new URLSearchParams(searchParams);
-            console.log(current);
-            current.delete("modal");
-            const search = current.toString();
-            const url = pathname + search ? `?${search}` : "";
-            router.push(url);
-          }
-        }}
-        title="Set Private Commission for 1 Product"
-        description="A private commission allows you to set a different commission for a specific Creator."
-      >
-        <div className="flex w-full flex-col items-center gap-[21px] rounded-[19px]     sm:pb-5">
-          <div className="flex flex-col items-start w-full md:w-full">
-            <div className="mt-[19px] w-full self-stretch " />
-            <Text size="3xl" as="p" className="">
-              Creator
-            </Text>
-            <Input
-              shape="rounded"
-              name="close_two"
-              placeholder={`Select a creator`}
-              suffix={
-                <div className="flex h-[10px] w-[10px] items-center justify-center">
-                  <Img
-                    src="img_close.svg"
-                    width={10}
-                    height={10}
-                    alt="close"
-                    className="h-[10px] w-[10px]"
-                  />
-                </div>
-              }
-              className="mt-1.5 gap-[35px] self-stretch border-[0.5px] border-solid border-black-900"
-            />
-            <div className="mt-[18px] flex items-center self-stretch md:flex-col">
-              <div className="flex w-[25%] flex-col items-start gap-1.5 md:w-full">
-                <Text size="3xl" as="p">
-                  Affiliate Commission
-                </Text>
-                {/* <SelectBox
+      {searchParams.get("modal") == "set_private_commission" && (
+        <ReusableModal
+          isOpen={!!searchParams.get("modal")}
+          toggleOpen={() => {
+            console.log("toggle open");
+            if (searchParams.get("modal")) {
+              const current = new URLSearchParams(searchParams);
+              console.log(current);
+              current.delete("modal");
+              const search = current.toString();
+              const url = pathname + search ? `?${search}` : "";
+              router.push(url);
+            }
+          }}
+          title="Set Private Commission for 1 Product"
+          description="A private commission allows you to set a different commission for a specific Creator."
+        >
+          <div className="flex w-full flex-col items-center gap-[21px] rounded-[19px]     sm:pb-5">
+            <div className="flex flex-col items-start w-full ">
+              <div className="mt-[19px] w-full self-stretch " />
+              <Text size="3xl" as="p" className="">
+                Creator
+              </Text>
+              <Input
+                shape="rounded"
+                name="close_two"
+                placeholder={`Select a creator`}
+                suffix={
+                  <div className="flex h-[10px] w-[10px] items-center justify-center">
+                    <Img
+                      src="img_close.svg"
+                      width={10}
+                      height={10}
+                      alt="close"
+                      className="h-[10px] w-[10px]"
+                    />
+                  </div>
+                }
+                className="mt-1.5 gap-[35px] self-stretch border-[0.5px] border-solid border-black-900"
+              />
+              <div className="mt-[18px] flex items-center self-stretch md:flex-row flex-col md:gap-3">
+                <div className="flex md:w-[25%] flex-col items-start gap-1.5 w-full">
+                  <Text size="3xl" as="p">
+                    Affiliate Commission
+                  </Text>
+                  {/* <SelectBox
                   size="sm"
                   shape="square"
                   name="dropdown"
                   options={dropDownOptions}
                   className="self-stretch"
                 /> */}
-                <Input
-                  shape="rounded"
-                  name="value_one"
-                  placeholder={``}
-                  suffix={"%"}
-                  className="self-stretch border-[0.5px] border-solid border-black-900"
-                />
+                  <Input
+                    shape="rounded"
+                    name="value_one"
+                    placeholder={``}
+                    suffix={"%"}
+                    className="self-stretch border-[0.5px] border-solid border-black-900"
+                  />
+                </div>
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="mb-1.5 ml-[18px] self-end !text-[14.62px] md:ml-0"
+                >
+                  +
+                </Text>
+                <div className="ml-[18px] flex md:w-[14%] min-w-[120px] flex-col gap-1.5   w-full">
+                  <Text size="3xl" as="p">
+                    Toocan Fees
+                  </Text>
+                  <Input
+                    shape="rounded"
+                    name="value_one"
+                    placeholder={`3.5`}
+                    suffix={"%"}
+                    className="border-[0.5px] border-solid border-black-900 sm:pr-5"
+                  />
+                </div>
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="mb-1.5 ml-[22px] self-end !text-[14.62px] md:ml-0"
+                >
+                  =
+                </Text>
+                <div className="ml-6 flex md:w-[58%] flex-col items-start gap-1.5 md:ml-0 w-full">
+                  <Text size="3xl" as="p">
+                    Total
+                  </Text>
+                  <Input
+                    shape="rounded"
+                    name="language"
+                    // placeholder={`%`}
+                    suffix={"%"}
+                    className="self-stretch border-[0.5px] border-solid border-black-900 sm:px-5"
+                  />
+                </div>
               </div>
               <Text
-                size="2xl"
+                size="s"
                 as="p"
-                className="mb-1.5 ml-[18px] self-end !text-[14.62px] md:ml-0"
+                className="mt-[11px] self-end !text-[9.8px] !text-gray-500"
               >
-                +
+                *You will get - 10% of this commission back from the Amazon
+                Brand Referral Bonus
               </Text>
-              <div className="ml-[18px] flex w-[14%] flex-col gap-1.5 md:ml-0 md:w-full">
-                <Text size="3xl" as="p">
-                  Levanta Fees
-                </Text>
-                <Input
-                  shape="rounded"
-                  name="value_one"
-                  placeholder={`3.5`}
-                  suffix={"%"}
-                  className="border-[0.5px] border-solid border-black-900 sm:pr-5"
-                />
-              </div>
-              <Text
-                size="2xl"
-                as="p"
-                className="mb-1.5 ml-[22px] self-end !text-[14.62px] md:ml-0"
-              >
-                =
-              </Text>
-              <div className="ml-6 flex w-[58%] flex-col items-start gap-1.5 md:ml-0 md:w-full">
-                <Text size="3xl" as="p">
-                  Total
-                </Text>
-                <Input
-                  shape="rounded"
-                  name="language"
-                  // placeholder={`%`}
-                  suffix={"%"}
-                  className="self-stretch border-[0.5px] border-solid border-black-900 sm:px-5"
-                />
-              </div>
             </div>
-            <Text
-              size="s"
-              as="p"
-              className="mt-[11px] self-end !text-[9.8px] !text-gray-500"
+            <button
+              onClick={() => {
+                handleCloseModal();
+              }}
+              className="min-w-[80px] sm:px-5 bg-light_green-100 rounded-lg h-[33px] "
             >
-              *You will get - 10% of this commission back from the Amazon Brand
-              Referral Bonus
-            </Text>
+              Save
+            </button>
           </div>
-          <button className="min-w-[80px] sm:px-5 bg-light_green-100 rounded-lg h-[33px] ">
-            Save
-          </button>
-        </div>
-      </ReusableModal>
-    </Wrapper>
+        </ReusableModal>
+      )}
+      {searchParams.get("modal") == "update_standard_commission" && (
+        <ReusableModal
+          isOpen={!!searchParams.get("modal")}
+          toggleOpen={() => {
+            console.log("toggle open");
+            if (searchParams.get("modal")) {
+              const current = new URLSearchParams(searchParams);
+              console.log(current);
+              current.delete("modal");
+              const search = current.toString();
+              const url = pathname + search ? `?${search}` : "";
+              router.push(url);
+            }
+          }}
+          title="Update standard commission"
+          description="A custome message to be shown here ."
+        >
+          <div className="flex w-full flex-col items-center gap-[21px] rounded-[19px]     sm:pb-5">
+            <div className="flex flex-col items-start w-full ">
+              <div className="mt-[19px] w-full self-stretch " />
+
+              <div className="mt-[18px] flex items-center self-stretch md:flex-row flex-col md:gap-3">
+                <div className="flex md:w-[25%] flex-col items-start gap-1.5 w-full">
+                  <Text size="3xl" as="p">
+                    Affiliate Commission
+                  </Text>
+                  {/* <SelectBox
+                  size="sm"
+                  shape="square"
+                  name="dropdown"
+                  options={dropDownOptions}
+                  className="self-stretch"
+                /> */}
+                  <Input
+                    shape="rounded"
+                    name="value_one"
+                    placeholder={``}
+                    suffix={"%"}
+                    className="self-stretch border-[0.5px] border-solid border-black-900"
+                  />
+                </div>
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="mb-1.5 ml-[18px] self-end !text-[14.62px] md:ml-0"
+                >
+                  +
+                </Text>
+                <div className="ml-[18px] flex md:w-[14%] min-w-[120px] flex-col gap-1.5   w-full">
+                  <Text size="3xl" as="p">
+                    Toocan Fees
+                  </Text>
+                  <Input
+                    shape="rounded"
+                    name="value_one"
+                    placeholder={`3.5`}
+                    suffix={"%"}
+                    className="border-[0.5px] border-solid border-black-900 sm:pr-5"
+                  />
+                </div>
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="mb-1.5 ml-[22px] self-end !text-[14.62px] md:ml-0"
+                >
+                  =
+                </Text>
+                <div className="ml-6 flex md:w-[58%] flex-col items-start gap-1.5 md:ml-0 w-full">
+                  <Text size="3xl" as="p">
+                    Total
+                  </Text>
+                  <Input
+                    shape="rounded"
+                    name="language"
+                    // placeholder={`%`}
+                    suffix={"%"}
+                    className="self-stretch border-[0.5px] border-solid border-black-900 sm:px-5"
+                  />
+                </div>
+              </div>
+              <Text
+                size="s"
+                as="p"
+                className="mt-[11px] self-end !text-[9.8px] !text-gray-500"
+              >
+                *You will get - 10% of this commission back from the Amazon
+                Brand Referral Bonus
+              </Text>
+            </div>
+            <button
+              onClick={() => {
+                handleCloseModal();
+              }}
+              className="min-w-[80px] sm:px-5 bg-light_green-100 rounded-lg h-[33px] "
+            >
+              Save
+            </button>
+          </div>
+        </ReusableModal>
+      )}
+    </div>
   );
 }
 
@@ -510,7 +557,7 @@ const ToolBar = () => {
   };
 
   return (
-    <div className="">
+    <div className="w-full">
       <div className="flex flex-col gap-4 lg:flex-row">
         {/* Actions */}
         <div className="w-full lg:max-w-[343px] relative">

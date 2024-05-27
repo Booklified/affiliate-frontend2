@@ -2,14 +2,22 @@ import Link from "next/link";
 import React from "react";
 import { Menu, MenuItem, Sidebar, sidebarClasses } from "react-pro-sidebar";
 import { Img } from "./..";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar1({ ...props }) {
+  const pathname = usePathname();
   const [collapsed, setCollapsed] = React.useState(false);
 
   //use this function to collapse/expand the sidebar
   //function collapseSidebar() {
   //    setCollapsed(!collapsed)
   //}
+
+  const getIsCurrent = (item) => {
+    return pathname.includes(item);
+  };
+
+  console.log("---pathname", pathname);
   return (
     <Sidebar
       {...props}
@@ -17,7 +25,7 @@ export default function Sidebar1({ ...props }) {
       collapsedWidth="80px !important"
       collapsed={collapsed}
       rootStyles={{ [`.${sidebarClasses.container}`]: { gap: 83 } }}
-      className={`${props.className} flex flex-col h-screen pt-[79px] pl-[23px] pr-[21px] gap-[83px] top-0 md:gap-[62px] md:pt-5 md:p-5 sm:gap-[41px] sm:px-5 bg-black-900 shadow-xs !sticky overflow-auto md:hidden`}
+      className={`${props.className} flex flex-col h-screen pt-[79px] pl-[23px] pr-[21px] gap-[83px] top-0 md:gap-[62px] md:pt-5 md:p-5 sm:gap-[41px] sm:px-5 bg-black-900 shadow-xs !sticky overflow-auto `}
     >
       <Img
         src="img_sidebar_logo.png"
@@ -44,13 +52,22 @@ export default function Sidebar1({ ...props }) {
             },
           },
         }}
-        className="w-full self-stretch"
+        className="self-stretch w-full"
       >
         <div className="flex h-[75vh] flex-col gap-3 justify-between">
           <div className="relative ">
-            <div className="absolute  m-auto w-full">
-              <div className="flex flex-col gap-3">
-                <Link href="/">
+            <div className="absolute w-full m-auto">
+              <div className="flex flex-col gap-3 ">
+                <Link
+                  href="/"
+                  style={{
+                    background:
+                      pathname === "/"
+                        ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                        : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -63,9 +80,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Dashboard
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/assets">
+                <Link
+                  href="/assets"
+                  style={{
+                    background: pathname?.includes("/assets")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -78,9 +104,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Brand Assets
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/campaigns">
+                <Link
+                  href="/campaigns"
+                  style={{
+                    background: pathname?.includes("/campaigns")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -93,9 +128,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Campaigns
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/affiliates">
+                <Link
+                  href="/affiliates"
+                  style={{
+                    background: pathname?.includes("/affiliates")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -108,9 +152,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Affiliates
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/integrations">
+                <Link
+                  href="/integrations"
+                  style={{
+                    background: pathname?.includes("/integrations")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -123,9 +176,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Integrations
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/billing">
+                <Link
+                  href="/billing"
+                  style={{
+                    background: pathname?.includes("/billing")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -138,9 +200,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Billing & Payment
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/knowledge">
+                <Link
+                  href="/knowledge"
+                  style={{
+                    background: pathname?.includes("/knowledge")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -153,9 +224,18 @@ export default function Sidebar1({ ...props }) {
                     }
                   >
                     Knowledge Base
+                    <RightChevron />
                   </MenuItem>
                 </Link>
-                <Link href="/products">
+                <Link
+                  href="/products"
+                  style={{
+                    background: pathname?.includes("/products")
+                      ? "linear-gradient(90deg, #FF3B2E 0%, #FA372C 5%, #D31D20 46%, #BB0C19 79%, #B30717 100%)"
+                      : "",
+                    borderRadius: "15px",
+                  }}
+                >
                   <MenuItem
                     icon={
                       <Img
@@ -163,46 +243,36 @@ export default function Sidebar1({ ...props }) {
                         width={24}
                         height={19}
                         alt="products icon"
-                        className="h-[24px] w-[19px]"
+                        className="h-[24px] w-[19px] flex"
                       />
                     }
-                    // suffix={
-                    //   <div className="flex flex-col justify-center">
-                    //     <Img
-                    //       src="img_arrow_right_white_a700.svg"
-                    //       width={9}
-                    //       height={16}
-                    //       alt="arrow image"
-                    //       className="h-[16px]"
-                    //     />
-                    //   </div>
-                    // }
                   >
                     Products
+                    <RightChevron />
                   </MenuItem>
                 </Link>
               </div>
             </div>
           </div>
-          {/* <div className="flex w-full">
-            <Link href="/settings" className="w-full">
-              <MenuItem
-                icon={
-                  <Img
-                    src="img_search.svg"
-                    width={25}
-                    height={25}
-                    alt="search icon"
-                    className="h-[25px] w-[25px]"
-                  />
-                }
-              >
-                Settings
-              </MenuItem>
-            </Link>
-          </div> */}
         </div>
       </Menu>
     </Sidebar>
   );
 }
+
+const RightChevron = () => (
+  <svg
+    width="11"
+    height="19"
+    viewBox="0 0 11 19"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.42969 17.12C1.42969 17.01 1.4697 16.91 1.5597 16.83L9.50971 9.57L1.54969 1.87999C1.38969 1.72999 1.38969 1.48 1.54969 1.32C1.69969 1.16 1.94969 1.16 2.10969 1.32L10.3697 9.29998C10.4497 9.36998 10.4897 9.48001 10.4897 9.58001C10.4897 9.69001 10.4397 9.79998 10.3597 9.86998L2.09971 17.41C1.93971 17.56 1.68971 17.55 1.53971 17.38C1.46971 17.3 1.4397 17.21 1.4397 17.11L1.42969 17.12Z"
+      fill="white"
+      stroke="white"
+      stroke-miterlimit="10"
+    />
+  </svg>
+);

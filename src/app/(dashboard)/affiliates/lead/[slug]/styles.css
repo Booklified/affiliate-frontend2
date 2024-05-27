@@ -16,9 +16,9 @@ body {
 
 .profileSection {
   background-color: #fff;
-  /* grid-area: 1 / 1 / 41 / 5; */
-  /* width: 406.74px;
-  height: 720.39px; */
+  grid-area: 1 / 1 / 41 / 5;
+  width: 406.74px;
+  height: 720.39px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -28,28 +28,28 @@ body {
 
 .priceSection {
   background-color: #fff;
-  /* grid-area: 1 / 6 / 12 / 10; */
-  /* height: 210.33px; */
+  grid-area: 1 / 6 / 12 / 10;
+  height: 210.33px;
   border-radius: 20px;
 }
 
 .priceSection2 {
   background-color: #fff;
-  /* grid-area: 1 / 11 / 12 / 15; */
-  /* height: 210.33px; */
+  grid-area: 1 / 11 / 12 / 15;
+  height: 210.33px;
   border-radius: 20px;
 }
 
 .priceSection3 {
   background-color: #fff;
-  /* grid-area: 1 / 16 / 12 / 20; */
-  /* height: 210.33px; */
+  grid-area: 1 / 16 / 12 / 20;
+  height: 210.33px;
   border-radius: 20px;
 }
 
 .productBrands {
   background-color: #fff;
-  /* grid-area: 13 / 6 / 24 / 13; */
+  grid-area: 13 / 6 / 24 / 13;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -57,19 +57,19 @@ body {
 
 .promoProducts {
   background-color: #fff;
-  /* grid-area: 13 / 13 / 24 / 20; */
+  grid-area: 13 / 13 / 24 / 20;
   border-radius: 20px;
 }
 
 .productNotes {
   display: flex;
-  /* height: 159px;
-  width: 1050px; */
+  height: 159px;
+  width: 1050px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  /* grid-area: 26 / 6 / 37 / 20; */
+  grid-area: 26 / 6 / 37 / 20;
   border-radius: 20px;
 }
 
@@ -141,7 +141,7 @@ body {
 
 .profile {
   width: 206px;
-  /* height: 206px; */
+  height: 206px;
   background-color: #030024; /* Adjust as needed */
   border-radius: 50%;
 }
@@ -194,7 +194,7 @@ ul li {
 }
 
 .PartnerShip {
-  /* width: 303px; */
+  width: 303px;
   height: 104px;
   background-color: #e7ebf8;
   display: flex;
@@ -264,11 +264,11 @@ ul li {
   .priceSection3,
   .productBrands,
   .promoProducts {
-    /* width: 405px; */
+    width: 405px;
   }
   .productNotes {
-    /* width: 405px; */
-    /* height: 405px; */
+    width: 405px;
+    height: 405px;
   }
   .ButtonBox {
     font-size: 10px;

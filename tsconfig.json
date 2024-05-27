@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components",
- "src/service/employeesService.js", "src/app/_components/shared/imageWithFallBack.jsx", "src/auth.ts", "src/app/products/index.js"  ],
+ "src/service/employeesService.js", "src/app/_components/shared/imageWithFallBack.jsx", "src/auth.ts", "src/app/(dashboard)/products/index.js"  ],
   "exclude": ["node_modules"]
 }

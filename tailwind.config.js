@@ -7,7 +7,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      screens: { md: { max: "1050px" }, sm: { max: "550px" } },
+      // screens: { md: { max: "1050px" }, sm: { max: "550px" } },
+      screens: {
+        "3xl": { min: "1720px" },
+      },
       colors: {
         white: { A700: "#ffffff" },
         gray: { 100: "#f0f4ff", 500: "#8f8f8f" },

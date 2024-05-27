@@ -28,12 +28,24 @@ const SelectBox = React.forwardRef(
       shape,
       variant = "fill",
       size = "xs",
-      color = "",
+      color = "white_A700",
       ...restProps
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+      options?: any[];
+      isSearchable?: boolean;
+      isMulti?: boolean;
+      indicator?: React.ReactNode;
+      shape?: "square";
+      variant?: "fill";
+      size?: "sm" | "xs" | "md";
+      color?: "white_A700";
+      [x: string]: any;
     },
     ref
   ) => {
-    const [menuPortalTarget, setMenuPortalTarget] = React.useState(null);
+    const [menuPortalTarget, setMenuPortalTarget] = React.useState<any>(null);
 
     React.useEffect(() => {
       setMenuPortalTarget(document.body);
@@ -42,7 +54,7 @@ const SelectBox = React.forwardRef(
     return (
       <div className="cursor-pointer">
         <Select
-          ref={ref}
+          ref={ref as any}
           options={options}
           className={`${className} flex ${(shape && shapes[shape]) || ""} ${
             (size && sizes[size]) || ""
@@ -93,8 +105,8 @@ const SelectBox = React.forwardRef(
             menuPortal: (base) => ({ ...base, zIndex: 999999 }),
           }}
           menuPortalTarget={menuPortalTarget}
-          closeMenuOnScroll={(event) => {
-            return event.target.id === "scrollContainer";
+          closeMenuOnScroll={(event: any) => {
+            return event?.target?.id === "scrollContainer";
           }}
           {...restProps}
         />
