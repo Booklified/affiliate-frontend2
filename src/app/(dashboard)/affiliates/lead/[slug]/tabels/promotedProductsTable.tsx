@@ -31,33 +31,29 @@ function PromotedProductsTable() {
       {/* Table */}
       <h3 className="text-[22px] font-medium mb-4">Promoted Products</h3>
       <div className="w-full overflow-hidden">
-        <div className="!bg-[#fff] px-10 py-8 rounded-xl overflow-scroll w-full ">
+        <div className="!bg-[#fff] 3xl:px-10 px-3   py-8 rounded-xl overflow-scroll w-full ">
           {/* <div className="w-[2755px] bg-orange-200 h-10" /> */}
           <table
             style={{
               tableLayout: "unset",
-
-              textAlign: "center",
             }}
             className="w-full "
           >
-            <thead className="border-b border-stroke_primary">
+            {/* <thead className="border-b border-stroke_primary">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
                       style={{
-                        textAlign: [0, 1, 2].includes(index)
-                          ? "left"
-                          : "center",
+                        textAlign: [0].includes(index) ? "left" : "right",
                       }}
                       className={`
                   
                   pr-1
                
                 
-                py-2 pl-4 w-fit text-sm font-medium`}
+               w-fit text-sm font-medium`}
                     >
                       {header.isPlaceholder
                         ? null
@@ -69,31 +65,29 @@ function PromotedProductsTable() {
                   ))}
                 </tr>
               ))}
-            </thead>
+            </thead> */}
             <tbody className="">
               {table.getRowModel().rows.map((row, index) => {
                 return (
                   <tr
                     style={{
-                      textAlign: [0, 1, 2].includes(index) ? "left" : "center",
+                      textAlign: [0].includes(index) ? "left" : "right",
                       borderRadius: "160px",
                       marginTop: "10px",
                     }}
                     key={row.id}
-                    className="px-5 py-3 text-sm"
+                    className="px-2 py-3 text-sm"
                   >
                     {row.getVisibleCells().map((cell, index) => (
                       <td
                         style={{
-                          textAlign: [0, 1, 2].includes(index)
-                            ? "left"
-                            : "center",
+                          textAlign: [0].includes(index) ? "left" : "right",
                           width: "fit",
                         }}
                         key={cell.id}
                         className={`
                     w-fit px-1 
-             pl-4 py-4 border-b `}
+             3xl:pl-4 pl-4 2xl:pl-1 py-4 border-b `}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -109,7 +103,7 @@ function PromotedProductsTable() {
           <TablePagination
             setPage={setPage}
             page={page}
-            siblings={1}
+            siblings={0}
             total={productsData.length || 0}
           />
         </div>

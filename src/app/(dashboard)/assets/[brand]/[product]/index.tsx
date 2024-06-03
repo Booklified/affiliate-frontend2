@@ -1,19 +1,10 @@
 "use client";
 
-import Wrapper from "@/components/Wrapper";
 import React from "react";
-import { Heading, Img, Text } from "../../../components";
-import Header from "../../../components/Header";
-import Header1 from "@/components/Header1";
-import SelectBrandAndProduct from "@/components/shared/selectBrandAndProduct";
 
 export default function WireframeBrandAssetsOnePage() {
   return (
-    <div className="w-full px-6 mt-10">
-      <div className="flex flex-col-reverse items-center justify-between w-full gap-2 py-2 font-bold md:flex-row">
-        <SelectBrandAndProduct />
-        <Header1 />
-      </div>
+    <div className="w-full ">
       {/* Asset Library */}
       <div className="mt-6">
         <h2 className="text-[40px] font-bold text-black-900">Asset Library</h2>
@@ -22,13 +13,19 @@ export default function WireframeBrandAssetsOnePage() {
             <button>
               <UploadedIcon />
             </button>
-            <p className="mt-5 font-medium text-black-900">Brand Images</p>
+            <p className="mt-5 font-medium text-black-900">Product Images</p>
           </div>
           <div>
             <button>
               <UploadedIcon />
             </button>
-            <p className="mt-5 font-medium text-black-900">Brand Documents</p>
+            <p className="mt-5 font-medium text-black-900">Product Documents</p>
+          </div>
+          <div>
+            <button>
+              <UploadedIcon />
+            </button>
+            <p className="mt-5 font-medium text-black-900">Product Videos</p>
           </div>
         </div>
       </div>
@@ -38,25 +35,40 @@ export default function WireframeBrandAssetsOnePage() {
         <h2 className="text-[40px] font-bold text-black-900">Upload</h2>
         <div className="flex flex-wrap gap-[78px] mt-6 border-t border-white-A700 pt-5 xl:pl-20 md:pl-5">
           <div>
-            <p className="mb-5 font-medium text-black-900">Brand Images</p>
+            <p className="mb-5 font-medium text-black-900">Product Images</p>
             <button>
               <UploadIcon />
             </button>
             <div className="mt-3 text-[10px] text-gray-500">
               <p className="text-gray-500">Exemples:</p>
-              <p className="text-gray-500">Brand Guide PDF or Word Doc</p>
+              <p className="text-gray-500">Raw ImagesDoc</p>
+              <p className="text-gray-500">Lifestyle Images</p>
+              <p className="text-gray-500">*Any Image You Want</p>
+              <p className="text-gray-500">Your Partners To Use</p>
             </div>
           </div>
           <div>
-            <p className="mb-5 font-medium text-black-900">Brand Documents</p>
+            <p className="mb-5 font-medium text-black-900">Product Documents</p>
             <button>
               <UploadIcon />
             </button>
             <div className="mt-3 text-[10px] text-gray-500">
               <p className="text-gray-500">Exemples:</p>
-              <p className="text-gray-500">Logo Files</p>
-              <p className="text-gray-500">Branding Graphics</p>
-              <p className="text-gray-500">Color Swatches</p>
+              <p className="text-gray-500">Product Marketing Plan</p>
+              <p className="text-gray-500">*See Knowledge Base To</p>
+              <p className="text-gray-500">Understand What To Include</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-5 font-medium text-black-900">Product Videos</p>
+            <button>
+              <UploadIcon />
+            </button>
+            <div className="mt-3 text-[10px] text-gray-500">
+              <p className="text-gray-500">Exemples:</p>
+              <p className="text-gray-500">Any Videos or Video Clips</p>
+              <p className="text-gray-500">*Of Your Product</p>
             </div>
           </div>
         </div>
@@ -73,7 +85,7 @@ const UploadedIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_4064_105)">
+    <g clipPath="url(#clip0_4064_105)">
       <path
         d="M178.023 35.815C178.023 34.425 178.003 33.015 177.753 31.665C176.023 22.035 168.213 15.535 158.313 15.525C137.513 15.495 116.703 15.425 95.9032 15.615C92.4632 15.645 90.7431 14.675 89.3131 11.545C85.7431 3.735 79.3332 0.015 70.7832 0.015C53.9732 -0.005 37.1532 -0.005 20.3432 0.015C8.26316 0.025 0.0131412 8.225 0.0131412 20.265C-0.00685882 55.825 -0.00686981 91.385 0.0331302 126.945C0.0331302 128.865 0.193125 130.835 0.653125 132.685C2.88313 141.495 10.5631 147.165 20.1831 147.175C43.1031 147.195 66.0231 147.175 88.9431 147.175C111.743 147.175 134.543 147.185 157.343 147.155C159.143 147.155 160.993 147.055 162.743 146.665C172.163 144.575 178.023 136.985 178.023 126.895C178.043 96.535 178.023 66.175 178.023 35.815Z"
         className="fill-white-A700 hover:fill-yellow-900"

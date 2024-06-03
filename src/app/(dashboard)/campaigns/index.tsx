@@ -92,7 +92,7 @@ function Page() {
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-[9px] text-gray-500">{item?.name}</p>
+                    <p className="text-[12px] text-gray-500">{item?.name}</p>
                     <p className="text-xl text-black-900">{item?.amount}</p>
                     <span className="flex items-center gap-1">
                       {item?.change > 0 ? (
@@ -100,7 +100,7 @@ function Page() {
                       ) : (
                         <DownNumberIcon />
                       )}
-                      <p className="text-[8px]">
+                      <p className="text-[12px]">
                         <span className="text-yellow-900">
                           {" "}
                           {item?.change}%

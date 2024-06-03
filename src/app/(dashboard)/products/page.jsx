@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function WireframeProductsTwoPage() {
   return (
-    <div className="w-screen overflow-hidden md:w-full ">
+    <div className="overflow-hidden  md:w-full">
       <Header1 showNotification />
       <Page />
     </div>

@@ -1,3 +1,4 @@
+"use client";
 import {
   flexRender,
   getCoreRowModel,
@@ -41,7 +42,7 @@ function CampaignsTable() {
       {/* Table */}
 
       <div className="px-2">
-        <div className="!bg-[#fff] px-10 py-8 rounded-xl overflow-scroll w-full ">
+        <div className="!bg-[#fff] px-10 pt-8 rounded-xl overflow-scroll w-full  relative">
           {/* <div className="w-[2755px] bg-orange-200 h-10" /> */}
           <table
             style={{
@@ -116,6 +117,8 @@ function CampaignsTable() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="px-10 pb-8 bg-white-A700">
           <TablePagination siblings={1} total={campaingsData.length || 0} />
         </div>
       </div>

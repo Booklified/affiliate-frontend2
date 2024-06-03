@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 export default function Sidebar1({ ...props }) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
 
   //use this function to collapse/expand the sidebar
   //function collapseSidebar() {
@@ -24,16 +24,16 @@ export default function Sidebar1({ ...props }) {
       width="346px !important"
       collapsedWidth="80px !important"
       collapsed={collapsed}
-      rootStyles={{ [`.${sidebarClasses.container}`]: { gap: 83 } }}
-      className={`${props.className} flex flex-col h-screen pt-[79px] pl-[23px] pr-[21px] gap-[83px] top-0 md:gap-[62px] md:pt-5 md:p-5 sm:gap-[41px] sm:px-5 bg-black-900 shadow-xs !sticky overflow-auto `}
+      rootStyles={{ [`.${sidebarClasses.container}`]: { gap: 0 } }}
+      className={`${props.className} flex flex-col h-screen pt-[79px]  pr-[21px] gap-[83px] top-0 md:gap-[62px] md:pt-5 md:p-5 sm:gap-[41px] sm:px-5 bg-black-900 shadow-xs !sticky overflow-auto `}
     >
-      <Img
+      {/* <Img
         src="img_sidebar_logo.png"
         width={230}
         height={63}
         alt="sidebar logo"
         className="h-[63px] w-[230px] object-contain"
-      />
+      /> */}
       <Menu
         menuItemStyles={{
           button: {
@@ -272,7 +272,7 @@ const RightChevron = () => (
       d="M1.42969 17.12C1.42969 17.01 1.4697 16.91 1.5597 16.83L9.50971 9.57L1.54969 1.87999C1.38969 1.72999 1.38969 1.48 1.54969 1.32C1.69969 1.16 1.94969 1.16 2.10969 1.32L10.3697 9.29998C10.4497 9.36998 10.4897 9.48001 10.4897 9.58001C10.4897 9.69001 10.4397 9.79998 10.3597 9.86998L2.09971 17.41C1.93971 17.56 1.68971 17.55 1.53971 17.38C1.46971 17.3 1.4397 17.21 1.4397 17.11L1.42969 17.12Z"
       fill="white"
       stroke="white"
-      stroke-miterlimit="10"
+      strokeMiterlimit="10"
     />
   </svg>
 );

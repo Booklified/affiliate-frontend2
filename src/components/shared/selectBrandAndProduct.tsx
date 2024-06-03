@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
@@ -118,7 +120,7 @@ const SelectBrandAndProduct: React.FC = () => {
 
   return (
     <Dropdown
-      className="w-full max-w-[300px]  px-3 py-2 rounded-lg bg-white-A700"
+      className="w-full max-w-[300px] h-fit  px-3 py-2 rounded-lg bg-white-A700"
       dropdownRender={() => {
         return (
           <Collapse

@@ -34,7 +34,7 @@ export default function Header({ ...props }) {
         name="Brand Dropdown"
         placeholder={`Brand 1`}
         options={dropDownOptions}
-        className=" gap-px "
+        className="gap-px "
       />
 
       <SignedOut>
@@ -44,7 +44,7 @@ export default function Header({ ...props }) {
       <SignedIn>
         <UserButton
           afterSignOutUrl={`${
-            typeof window !== "undefined" ? window.location.origin : ""
+            typeof window !== "undefined" ? window?.location?.origin : ""
           }${pathname}`}
         />
       </SignedIn>

@@ -77,6 +77,7 @@ export default function WireframeAffiliatesOnePage() {
   const getLink = (e: string) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     current.set("view", e.toString());
+    current.set("page", "1");
 
     const search = current.toString();
     const query = search ? `?${search}` : "";
@@ -91,13 +92,14 @@ export default function WireframeAffiliatesOnePage() {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 gap-9 md:self-stretch">
+    <div className="flex flex-col w-full overflow-x-hidden gap-9 md:self-stretch">
       <div>
         <div className="flex flex-col gap-11">
           <div className="flex flex-wrap ">
             {list.map((item, index) => {
               return (
                 <Link
+                  key={index}
                   href={getLink(item.param)}
                   className="w-full p-2 sm:w-1/2 xl:w-1/4"
                 >

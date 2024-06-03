@@ -11,10 +11,13 @@ export const metadata = {
 
 export default function WireframeAffiliatesOnePage() {
   return (
-    <div className="w-screen overflow-hidden md:w-full ">
+    <div className="overflow-hidden md:w-full">
       <div className="flex flex-col-reverse w-full py-2 font-bold md:flex-row">
         <div className="flex-grow pt-3 pl-2 text-2xl text-black-900 whitespace-nowrap">
-          <Link href={"/affiliates?add=true"} className="flex flex-wrap">
+          <Link
+            href={"/affiliates?add=true"}
+            className="flex flex-wrap text-black-900 hover:text-black-900"
+          >
             <p className="text-4xl font-bold">Recruit New Affiliates</p>
             <p className="text-gray-500 text-[15px] mt-auto ml-1">
               {" "}
@@ -22,7 +25,8 @@ export default function WireframeAffiliatesOnePage() {
             </p>
           </Link>
         </div>
-        <Header1 showNotification />
+
+        <Header1 showNotification={true} />
       </div>
       <Page />
     </div>

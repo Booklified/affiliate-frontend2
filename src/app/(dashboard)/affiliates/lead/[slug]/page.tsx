@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function WireframeBillingPayment1OnePage() {
   return (
-    <div className="flex flex-col w-screen min-h-full overflow-hidden md:w-full">
+    <div className="flex flex-col min-h-full overflow-hidden ">
       <Header1 showNotification />
       <Page />
     </div>

@@ -153,6 +153,17 @@ body {
   margin-top: 10px;
 }
 
+/* @media (max-width: 1536px) {
+ .profile {
+    width: 100px;
+    height: 100px;
+  }
+ .profileName {
+    font-size: 25px;
+    margin-top: 5px;
+  }
+} */
+
 .Social {
   list-style-type: none;
   font-size: 24px; /* Adjust as needed */

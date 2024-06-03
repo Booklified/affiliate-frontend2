@@ -29,6 +29,7 @@ import {
 } from ".././affiliatesColumns";
 import TablePagination from "@/components/shared/tablePagination";
 import AffiliatesToolBar from "./affiliatesToolBar";
+import { get } from "http";
 
 export default function LeadGenerationTable() {
   const searchParams = useSearchParams();
@@ -52,6 +53,8 @@ export default function LeadGenerationTable() {
     const end = page * limit;
     return leadGenerationsData.slice(start, end);
   }, [page, limit]);
+
+  console.log("--------", getPagintedData);
   const table = useReactTable({
     data: getPagintedData,
     columns: leadGenerationColumns,
@@ -73,9 +76,10 @@ export default function LeadGenerationTable() {
 
   return (
     <div className="px-2">
-      <div className="!bg-[#fff] px-10 py-8 rounded-xl overflow-scroll w-full ">
+      <div className="px-10 py-8 bg-white-A700 rounded-t-xl">
         <AffiliatesToolBar title="All Affiliates" subTitle="Active Members" />
-        {/* <div className="w-[2755px] bg-orange-200 h-10" /> */}
+      </div>
+      <div className="!bg-[#fff]  px-10   overflow-scroll w-full ">
         <table
           style={{
             tableLayout: "unset",
@@ -85,16 +89,17 @@ export default function LeadGenerationTable() {
           className="w-full "
         >
           <thead className="border-b border-stroke_primary">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+            {table.getHeaderGroups().map((headerGroup, index) => (
+              <tr key={headerGroup.id + index + "x"}>
                 {headerGroup.headers.map((header, index) => (
                   <th
-                    key={header.id}
+                    key={header.id + index + "a"}
                     style={{
-                      textAlign: [0, 1, 2].includes(index) ? "left" : "center",
+                      textAlign: "left",
+                      whiteSpace: "nowrap",
                     }}
                     className={`
-                  
+                  text-gray-500
                   pr-1
                
                 
@@ -116,24 +121,22 @@ export default function LeadGenerationTable() {
               return (
                 <tr
                   style={{
-                    textAlign: [0, 1, 2].includes(index) ? "left" : "center",
                     borderRadius: "160px",
                     marginTop: "10px",
+                    whiteSpace: "nowrap",
                   }}
-                  key={row.id}
+                  key={row.id + index + "d"}
                   className="px-5 py-3 text-sm"
                 >
                   {row.getVisibleCells().map((cell, index) => (
                     <td
                       style={{
-                        textAlign: [0, 1, 2].includes(index)
-                          ? "left"
-                          : "center",
+                        textAlign: "left",
                         width: "fit",
                       }}
                       key={cell.id}
                       className={`
-                    w-fit px-1 
+                    w-fit px-3 
              pl-4 py-4 border-b `}
                     >
                       {flexRender(
@@ -147,6 +150,8 @@ export default function LeadGenerationTable() {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="px-10 pb-8 bg-white-A700 rounded-b-xl">
         <TablePagination siblings={1} total={leadGenerationsData.length || 0} />
       </div>
     </div>

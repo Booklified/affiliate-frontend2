@@ -33,7 +33,7 @@ export const brandsTableColumns = [
     header: "",
     cell: (cell) => {
       return (
-        <button className="    w-[214px] h-[26px] flex items-center justify-center text-yellow-900 border border-black-900 hover:text-white-A700 hover:border-transparent hover:bg-yellow-900 rounded-lg ">
+        <button className="    3xl:w-[214px] w-[190px] ml-auto h-[26px] flex items-center justify-center text-yellow-900 border border-black-900 hover:text-white-A700 hover:border-transparent hover:bg-yellow-900 rounded-lg ">
           Campaign Ad Group Link
         </button>
       );
@@ -55,7 +55,7 @@ export const productsTableColumns = [
     header: "",
     cell: (cell) => {
       return (
-        <button className="    w-[214px] h-[26px] flex items-center justify-center text-yellow-900 border border-black-900 hover:text-white-A700 hover:border-transparent hover:bg-yellow-900 rounded-lg ">
+        <button className="    3xl:w-[214px] w-[190px] ml-auto h-[26px] flex items-center justify-center text-yellow-900 border border-black-900 hover:text-white-A700 hover:border-transparent hover:bg-yellow-900 rounded-lg ">
           Campaign Ad Group Link
         </button>
       );

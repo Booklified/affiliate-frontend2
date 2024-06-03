@@ -53,7 +53,7 @@ const TablePagination: React.FC<PaginationProps> = ({
   };
 
   const generatePages = () => {
-    const totalNumbers = siblings * 2 + 3;
+    const totalNumbers = siblings * 1 + 2;
     const totalBlocks = totalNumbers + 2;
 
     if (totalPages > totalBlocks) {
@@ -93,7 +93,10 @@ const TablePagination: React.FC<PaginationProps> = ({
     <div className="flex w-full flex-col gap-[18px] md:w-full">
       <div className="h-px bg-blue_gray-100" />
       <div className="flex items-center justify-between gap-5">
-        <Text as="p" className="self-start !text-[13.69px] !text-blue_gray-100">
+        <Text
+          as="p"
+          className="self-start 2xl:text-[13.69px] text-small-text !text-blue_gray-100"
+        >
           Showing {currentPage} of {totalPages} entries
         </Text>
         <div className="flex items-center">

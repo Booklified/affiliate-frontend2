@@ -5,83 +5,33 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
+  useAuth,
   useUser,
 } from "@clerk/nextjs";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-import { Input } from "../../app/components-main/Input";
-import { Button, Img, Text } from "./..";
+import React, { useEffect } from "react";
 
-export default function Header1({ ...props }) {
+export default function Header1({ showNotification, ...props }) {
   const { user } = useUser();
-  console.log(user);
-  const [searchBarValue, setSearchBarValue] = React.useState("");
+  const { actor, userId, getToken } = useAuth();
+  console.log("---actor", actor);
 
   const pathname = usePathname();
+
   return (
     <header
       {...props}
-      className={`${props.className} ml-auto  flex md:flex-row flex-col justify-end w-fit items-center gap-[22px] pt-2  px-3 py-4`}
+      className={`${props.className} ml-auto min-w-20     flex md:flex-row flex-col justify-end w-fit items-center gap-[22px]  px-3 `}
     >
-      {/* <div className=" flex  max-w-[1199px] justify-end  items-center gap-[22px]">
-        <Input
-          name="Search Field"
-          placeholder={`Search`}
-          value={searchBarValue}
-          onChange={(e) => setSearchBarValue(e)}
-          suffix={
-            <div className="flex h-[29px] w-[29px] items-center justify-center">
-              {searchBarValue?.length > 0 ? (
-                <CloseSVG
-                  onClick={() => setSearchBarValue("")}
-                  height={29}
-                  width={29}
-                />
-              ) : (
-                <Img
-                  src="img_rewind.svg"
-                  width={29}
-                  height={29}
-                  alt="rewind"
-                  className="h-[29px] w-[29px] cursor-pointer"
-                />
-              )}
-            </div>
-          }
-          className="flex !h-[51px] rounded-lg flex-grow items-center justify-center gap-[35px] bg-white-A700 pl-[26px] pr-[18px] text-lg text-blue_gray-100 sm:pl-5"
-        />
-
-        {props?.showAddButton && (
-          <Button
-            size="lg"
-            shape="square"
-            leftIcon={
-              <Img
-                src="img_plus_white_a700.svg"
-                width={23}
-                height={23}
-                alt="plus"
-                className="h-[23px] w-[23px]"
-              />
-            }
-            className="min-w-[236px] gap-[15px] sm:px-5 bg-[#FF3B2E] text-white-A700 rounded-lg"
-          >
-            Add New Affiliate
-          </Button>
-        )}
-      </div> */}
       <div className="flex justify-end items-center gap-[19px]  ">
-        {/* <Button shape="round" className="w-[51px] shadow-sm">
-          <Img src="img_vector.svg" width={51} height={51} />
-        </Button> */}
-
         <SignedOut>
-          <SignInButton />
+          <SignInButton className="px-3 py-2 bg-yellow-900 rounded-md text-white-A700 ">
+            Sign in
+          </SignInButton>
         </SignedOut>
 
         <SignedIn>
-          {props.showNotification && (
+          {showNotification && (
             <svg
               width="60"
               height="60"
@@ -107,9 +57,9 @@ export default function Header1({ ...props }) {
                   width="71.3804"
                   height="71.38"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"
@@ -142,7 +92,7 @@ export default function Header1({ ...props }) {
           </span>
           <UserButton
             afterSignOutUrl={`${
-              typeof window !== "undefined" ? window.location.origin : ""
+              typeof window !== "undefined" ? window?.location?.origin : ""
             }${pathname}`}
           />
         </SignedIn>

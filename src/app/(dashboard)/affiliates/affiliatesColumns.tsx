@@ -23,7 +23,7 @@ export const leadGenerationColumns = [
     cell: (cell) => {
       let id = Math.floor(Math.random() * 1000).toString();
       return (
-        <div className="flex items-center gap-5 !w-fit">
+        <div className="flex items-center  !w-fit font-[400]">
           <Link href={`/affiliates/lead/${id}`}>{cell.getValue()}</Link>
         </div>
       );
@@ -33,39 +33,31 @@ export const leadGenerationColumns = [
     header: "Channel",
     cell: (cell) => (
       <div>
-        <Text size="8xl" as="p">
-          {cell.getValue()}
-        </Text>
+        <p className="text-sm">{cell.getValue()}</p>
       </div>
     ),
   }),
   leadGenerationColumnHelper.accessor("associatedBrands", {
     header: "Associated Brand(s)",
     cell: (cell) => (
-      <div className="flex flex-col items-center gap-[42px] w-fit">
-        <Text size="8xl" as="p">
-          {cell.getValue()}
-        </Text>
+      <div className="flex flex-col items-center w-fit">
+        <p className="text-sm">{cell.getValue()}</p>
       </div>
     ),
   }),
   leadGenerationColumnHelper.accessor("phoneNumber", {
     header: "Phone Number",
     cell: (cell) => (
-      <div className="flex flex-col items-center gap-[42px] w-fit">
-        <Text size="8xl" as="p">
-          {cell.getValue()}
-        </Text>
+      <div className="flex flex-col items-center w-fit">
+        <p className="text-sm">{cell.getValue()}</p>
       </div>
     ),
   }),
   leadGenerationColumnHelper.accessor("email", {
     header: "Email",
     cell: (cell) => (
-      <div className="flex flex-col items-center gap-[42px] w-fit">
-        <Text size="8xl" as="p">
-          {cell.getValue()}
-        </Text>
+      <div className="flex flex-col items-center w-fit">
+        <p className="text-sm">{cell.getValue()}</p>
       </div>
     ),
   }),
@@ -554,7 +546,14 @@ const contactTemplateColumnHelper = createColumnHelper<ContactTemplateType>();
 export const contactTemplateColumns = [
   contactTemplateColumnHelper.accessor("templateName", {
     header: "Template Name",
-    cell: (cell) => <div>{cell.getValue()}</div>,
+    cell: (cell) => {
+      let id = Math.floor(Math.random() * 1000).toString();
+      return (
+        <div className="flex items-center gap-5 !w-fit font-[400]">
+          <Link href={`/affiliates/lead/${id}`}>{cell.getValue()}</Link>
+        </div>
+      );
+    },
   }),
   contactTemplateColumnHelper.accessor("subject", {
     header: "Subject",
@@ -972,7 +971,14 @@ const agreementTemplateColumnHelper =
 export const agreementTemplateColumns = [
   agreementTemplateColumnHelper.accessor("agreementName", {
     header: "Agreement Name",
-    cell: (cell) => <div>{cell.getValue()}</div>,
+    cell: (cell) => {
+      let id = Math.floor(Math.random() * 1000).toString();
+      return (
+        <div className="flex items-center gap-5 !w-fit font-[400]">
+          <Link href={`/affiliates/lead/${id}`}>{cell.getValue()}</Link>
+        </div>
+      );
+    },
   }),
   agreementTemplateColumnHelper.accessor("version", {
     header: "Version",
@@ -1312,7 +1318,14 @@ const onboardingColumnHelper = createColumnHelper<OnboardingType>();
 export const onboardingColumns = [
   onboardingColumnHelper.accessor("step", {
     header: "Step",
-    cell: (cell) => <div>{cell.getValue()}</div>,
+    cell: (cell) => {
+      let id = Math.floor(Math.random() * 1000).toString();
+      return (
+        <div className="flex items-center gap-5 !w-fit font-[400]">
+          <Link href={`/affiliates/lead/${id}`}>{cell.getValue()}</Link>
+        </div>
+      );
+    },
   }),
   onboardingColumnHelper.accessor("description", {
     header: "Description",

@@ -38,13 +38,13 @@ export default function AgreementTemplateTable() {
 
   const limit = 10;
 
-  const getPagintedData = () => {
+  const getPagintedData = React.useMemo(() => {
     const start = (page - 1) * limit;
     const end = page * limit;
     return agreementTemplatesData.slice(start, end);
-  };
+  }, [page, limit]);
   const table = useReactTable({
-    data: getPagintedData(),
+    data: getPagintedData,
     columns: agreementTemplateColumns,
     getCoreRowModel: getCoreRowModel(),
 
@@ -64,9 +64,13 @@ export default function AgreementTemplateTable() {
 
   return (
     <div className="px-2">
-      <div className="!bg-[#fff] px-10 py-8 rounded-xl overflow-scroll w-full ">
-        {/* <div className="w-[2755px] bg-orange-200 h-10" /> */}
-        <AffiliatesToolBar title="Agreement Templates" />
+      <div className="px-10 py-8 bg-white-A700 rounded-t-xl">
+        <AffiliatesToolBar
+          title="Agreement Templates"
+          subTitle="Active Templates"
+        />
+      </div>
+      <div className="!bg-[#fff]  px-10   overflow-scroll w-full ">
         <table
           style={{
             tableLayout: "unset",
@@ -76,16 +80,17 @@ export default function AgreementTemplateTable() {
           className="w-full "
         >
           <thead className="border-b border-stroke_primary">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+            {table.getHeaderGroups().map((headerGroup, index) => (
+              <tr key={headerGroup.id + index + "x"}>
                 {headerGroup.headers.map((header, index) => (
                   <th
-                    key={header.id}
+                    key={header.id + index + "a"}
                     style={{
-                      textAlign: [0, 1, 2].includes(index) ? "left" : "center",
+                      textAlign: "left",
+                      whiteSpace: "nowrap",
                     }}
                     className={`
-                  
+                  text-gray-500
                   pr-1
                
                 
@@ -107,25 +112,23 @@ export default function AgreementTemplateTable() {
               return (
                 <tr
                   style={{
-                    textAlign: [0, 1, 2].includes(index) ? "left" : "center",
                     borderRadius: "160px",
                     marginTop: "10px",
+                    whiteSpace: "nowrap",
                   }}
-                  key={row.id}
+                  key={row.id + index + "d"}
                   className="px-5 py-3 text-sm"
                 >
                   {row.getVisibleCells().map((cell, index) => (
                     <td
                       style={{
-                        textAlign: [0, 1, 2].includes(index)
-                          ? "left"
-                          : "center",
+                        textAlign: "left",
                         width: "fit",
                       }}
                       key={cell.id}
                       className={`
-                    w-fit px-1 
-             pl-4 py-4 border-b `}
+                    w-fit px-3 
+             pl-4 py-6 border-b `}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -138,6 +141,8 @@ export default function AgreementTemplateTable() {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="px-10 pb-8 bg-white-A700 rounded-b-xl">
         <TablePagination
           siblings={1}
           total={agreementTemplatesData.length || 0}

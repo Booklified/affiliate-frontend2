@@ -7,13 +7,6 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react";
-import {
-  ArchiveBoxXMarkIcon,
-  ChevronDownIcon,
-  PencilIcon,
-  Square2StackIcon,
-  TrashIcon,
-} from "@heroicons/react/16/solid";
 
 import React, { useState } from "react";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
@@ -32,11 +25,7 @@ export default function MyDateRangePicker() {
     key: "selection",
   });
 
-  console.log(selectionRange);
-
   const handleSelect = (ranges: RangeKeyDict) => {
-    console.log("ranges :", ranges);
-    console.log(ranges);
     setSelectionRange(ranges.selection as any);
   };
 
@@ -75,7 +64,7 @@ export default function MyDateRangePicker() {
             <MenuItem>
               <DateRangePicker
                 ranges={[selectionRange]}
-                onChange={handleSelect}
+                // onChange={handleSelect}
               />
             </MenuItem>
           </MenuItems>

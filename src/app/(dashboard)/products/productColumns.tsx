@@ -1,6 +1,7 @@
 import { Img, Text } from "@/components";
 import { Row, Table, createColumnHelper } from "@tanstack/react-table";
 import Image from "next/image";
+import Link from "next/link";
 import { HTMLProps, useEffect, useRef } from "react";
 
 import * as z from "zod";
@@ -49,7 +50,10 @@ export const tableColumns = [
     header: "Product",
     cell: (cell) => {
       return (
-        <div className="flex items-center gap-5 !w-fit min-w-[420px]  ">
+        <Link
+          href={"#"}
+          className="flex items-center gap-5 !w-fit min-w-[420px]  "
+        >
           <div className="flex-shrink-0">
             <Img
               src="img_user_indigo_50.svg"
@@ -67,7 +71,7 @@ export const tableColumns = [
               {cell?.row?.original?.sku ?? ""}
             </Text>
           </div>
-        </div>
+        </Link>
       );
     },
   }),

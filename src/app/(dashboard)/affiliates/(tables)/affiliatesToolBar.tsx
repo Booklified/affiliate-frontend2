@@ -2,6 +2,7 @@ import { SearchSVG } from "@/assets/images";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import Link from "next/link";
 
 function AffiliatesToolBar({
   title,
@@ -51,18 +52,18 @@ function AffiliatesToolBar({
     current.set(key, value);
     const search = current.toString();
     const url = pathname + search ? `?${search}` : "";
-    router.push(url);
+    return url;
   };
 
   return (
-    <div className="flex flex-col justify-between w-full gap-6 lg:flex-row">
+    <div className="flex flex-col justify-between w-full gap-6 md:flex-row">
       <div className="flex flex-wrap gap-1">
         <p className="text-xl font-medium text-black-900">{title}</p>
         <p className="text-xl font-medium text-yellow-900">{subTitle}</p>
       </div>
 
-      <div className="flex flex-col items-end justify-end flex-grow gap-2 ml-auto xl:flex-row ">
-        <div className="relative flex px-5 pr-10 ml-auto overflow-hidden rounded-lg bg-indigo-50 ">
+      <div className="flex flex-col items-end justify-end flex-grow w-full gap-2 ml-auto md:w-fit sm:flex-row">
+        <div className="relative flex w-full px-5 pr-10 ml-auto overflow-hidden rounded-lg sm:w-fit bg-indigo-50 ">
           <span className="absolute -translate-y-1/2 right-3 top-1/2">
             <SearchSVG width={"20px"} height={"20px"} />
           </span>
@@ -71,12 +72,18 @@ function AffiliatesToolBar({
             className="flex-grow w-full border-none h-[30px] !outline-none !focus:outline-none "
           />
         </div>
-        <div className="relative min-w-[240px]   ">
+        <div className="relative min-w-[240px]   w-full sm:w-fit ">
           <Menu>
-            <div className="relative w-full lg:max-w-[228px]">
-              <MenuButton className="px-6 py-2 h-[30px] w-full bg-indigo-50 text-left rounded-t-lg">
+            <div className="relative w-full sm:max-w-[228px]">
+              <MenuButton className="px-6 py-2 h-[30px] w-full bg-indigo-50 text-left rounded-lg">
                 {sortLabel ? (
-                  <div className="flex items-center gap-2">{sortLabel}</div>
+                  <div className="flex items-center gap-2 text-gray-500">
+                    {" "}
+                    Sort By:{" "}
+                    <span className="capitalize text-black-900">
+                      {sortLabel}
+                    </span>
+                  </div>
                 ) : (
                   "Sort"
                 )}
@@ -84,23 +91,21 @@ function AffiliatesToolBar({
             </div>
             <MenuItems
               anchor="bottom"
-              className="w-full lg:w-[228px] px-2 py-2 space-y-1 rounded-b-lg shadow-lg bg-white-A700"
+              className=" sm:w-[228px] px-2 py-2 space-y-1 rounded-b-lg shadow-lg bg-white-A700 w-full"
             >
               {sortItems?.map((item, index) => {
                 return (
                   <MenuItem>
-                    <a
-                      onClick={() => {
-                        handleNavigate({
-                          key: "sort",
-                          value: `${item?.value}`,
-                        });
-                      }}
+                    <Link
+                      href={handleNavigate({
+                        key: "sort",
+                        value: `${item?.value}`,
+                      })}
+                      scroll={false}
                       className="flex items-center gap-2  hover:bg-light_green-100 py-2 px-4 rounded-lg  data-[focus]:bg-blue-100"
-                      href="#"
                     >
                       {item?.lable}
-                    </a>
+                    </Link>
                   </MenuItem>
                 );
               })}

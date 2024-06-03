@@ -1,250 +1,89 @@
 "use client";
-import Wrapper from "@/components/Wrapper";
 import React from "react";
 import Chart from "react-apexcharts";
-import { Button, Img, Text } from "../../components-main";
+import { Text } from "../../components-main";
 import Link from "next/link";
 import Header1 from "@/components/Header1";
 import MyDateRangePicker from "@/components/shared/dateRangePicker";
 
-import Campaigns from "../campaigns/index";
+import CampaignsChart from "../campaigns/chart";
+import SelectBrandAndProduct from "@/components/shared/selectBrandAndProduct";
+import ALLStats from "@/components/ALLStats";
 
-const data = [
-  {
-    sundayText: "Su",
-    mondayText: "Mo",
-    tuesdayText: "Tu",
-    wednesdayText: "We",
-    thursdayText: "Th",
-    fridayText: "Fr",
-    saturdayText: "Sa",
-  },
-  {
-    sundayText: "28",
-    mondayText: "29",
-    tuesdayText: "30",
-    wednesdayText: "1",
-    thursdayText: "2",
-    fridayText: "3",
-    saturdayText: "4",
-  },
-  {
-    sundayText: "5",
-    mondayText: "6",
-    tuesdayText: "7",
-    wednesdayText: "8",
-    thursdayText: "9",
-    fridayText: "10",
-    saturdayText: "11",
-  },
-  {
-    sundayText: "12",
-    mondayText: "13",
-    tuesdayText: "14",
-    wednesdayText: "15",
-    thursdayText: "16",
-    fridayText: "17",
-    saturdayText: "18",
-  },
-  {
-    sundayText: "19",
-    mondayText: "20",
-    tuesdayText: "21",
-    wednesdayText: "22",
-    thursdayText: "23",
-    fridayText: "24",
-    saturdayText: "25",
-  },
-  {
-    sundayText: "26",
-    mondayText: "27",
-    tuesdayText: "28",
-    wednesdayText: "29",
-    thursdayText: "30",
-    fridayText: "31",
-    saturdayText: "1",
-  },
-];
-
-const statDdata = [
-  {
-    name: "Commission",
-    amount: "$4,000.00",
-    icon: <CommissionIcon />,
-    change: 10,
-  },
-  {
-    name: "Brand Referral Bonus",
-    amount: "$5,500.00",
-    icon: <BrandReferralBonusIcon />,
-    change: -5,
-  },
-  {
-    name: "Clicks",
-    amount: "$1,700.00",
-    icon: <ClicksIcon />,
-    change: 28,
-  },
-  {
-    name: "Detail Page Views",
-    amount: "$300.00",
-    icon: <DetailPageViewsIcon />,
-    change: -12,
-  },
-  {
-    name: "Add to Carts",
-    amount: "$1,000.00",
-    icon: <AddtoCartsIcon />,
-    change: 16,
-  },
-  {
-    name: "Conversions",
-    amount: "$40,000.00",
-    icon: <ConversionsIcon />,
-    change: 44,
-  },
-];
 const Home = () => {
   return (
-    <div className="px-6 mt-6">
-      <div className="ml-auto 2xl:hidden">
+    <div className="@container">
+      <div className="ml-auto xl:hidden">
         <PageHeader />
       </div>
       <div className="relative flex w-full isolate ">
         <div className="relative w-full py-5 bg-yellow-900 px-7 max-w-fit rounded-t-2xl reverseBorder">
           <div className="flex items-center gap-2">
-            <h3 className="text-[40px] font-bold text-yellbg-yellow-900 text-white-A700">
+            <h3 className="main-heading text-yellbg-yellow-900 text-white-A700">
               Welcome, Mike!
             </h3>
           </div>
         </div>
         <div className="relative flex items-center flex-grow gap-2 pl-5 overflow-x-scroll bg-indigo-50">
-          <div className="hidden ml-auto 2xl:flex">
+          <div className="hidden ml-auto xl:flex">
             <PageHeader />
           </div>
         </div>
       </div>
-      <div>
+      <div className="w-full">
         <Stats />
       </div>
 
       {/* Trends */}
       <div className="mb-10">
-        <Trends />
+        <Filters />
       </div>
       <div>
         {/* stats */}
-        <div className="relative flex w-full isolate ">
-          <div className="relative w-full pt-5 pb-10 px-7 max-w-fit bg-white-A700 rounded-t-2xl reverseBorder">
-            <div className="flex items-center gap-2">
-              <div className="w-[46px] h-[46px] rounded-full bg-yellow-900 flex items-center justify-center">
-                <SignalIcon />
-              </div>
-              <div>
-                <p className="text-[9px] text-gray-500">Sales</p>
-                <p className="text-xl text-black-900">$4,000.00</p>
-                <span className="flex items-center gap-1">
-                  <UpNumbersIcon />
-                  <p className="text-[8px]">
-                    <span className="text-yellow-900"> 10%</span>This month
-                  </p>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="relative flex items-center flex-grow gap-2 pl-5 overflow-x-scroll bg-indigo-50">
-            {statDdata.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="px-5 py-2.5 border border-black-900 rounded-xl"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[46px] h-[46px] rounded-full bg-white-A700 flex items-center justify-center">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <p className="text-[9px] text-gray-500">{item?.name}</p>
-                      <p className="text-xl text-black-900">{item?.amount}</p>
-                      <span className="flex items-center gap-1">
-                        {item?.change > 0 ? (
-                          <UpNumbersIcon />
-                        ) : (
-                          <DownNumberIcon />
-                        )}
-                        <p className="text-[8px]">
-                          <span className="text-yellow-900">
-                            {" "}
-                            {item?.change}%
-                          </span>
-                          This month
-                        </p>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-            {/* <div className="absolute top-0 bottom-0 left-0 w-3 border-4 border-red-700 bg-indigo-50">
-            <div className="absolute top-0 bottom-0 left-0 w-2 rounded-bl-lg bg-indigo-50" />
-          </div> */}
-          </div>
-        </div>
-
-        <div className="w-full p-6 rounded-b-lg rounded-tr-lg bg-white-A700">
-          <Text size="lg" as="p">
-            Trends
-          </Text>
-          <CampaignsChart />
-        </div>
+        <ALLStats />
       </div>
     </div>
   );
 };
 
-const Trends = () => {
+const Filters = () => {
   return (
-    <div className="mt-6">
-      <div className="flex flex-col justify-between w-full gap-3 lg:flex-row">
-        <div className="flex items-center gap-3 py-3 pt-3 pl-12 pr-8 text-2xl rounded-lg w-fit text-black-900 whitespace-nowrap bg-white-A700">
+    <div className="w-full mt-6">
+      <div className="flex flex-col items-center justify-between w-full gap-3 lg:flex-row">
+        <div className="flex flex-col items-center w-full gap-3 py-3 pt-3 pl-12 pr-8 mx-auto text-2xl rounded-lg lg:mx-0 sm:w-fit sm:flex-row text-black-900 whitespace-nowrap bg-white-A700">
           <span className="text-xs font-medium">Date Range :</span>
           <MyDateRangePicker />
+          <span className="text-xs text-gray-500">vs.</span>
           <span className="text-xs text-gray-500">
-            vs. May 05, 2024 - Jun 05, 2024
+            May 05, 2024 - Jun 05, 2024
           </span>
         </div>
-        <PSelect />
+        <SelectBrandAndProduct />
       </div>
     </div>
   );
 };
 const Stats = () => {
   return (
-    <div className="flex flex-col w-full gap-5 p-6 overflow-hidden bg-yellow-900 2xl:flex-row">
-      <div className="flex 2xl:w-1/2  justify-center rounded-[20px] bg-white-A700 px-[27px] pb-8 pt-[27px] md:w-full sm:p-5">
+    <div className="flex flex-col w-full gap-5 p-6 overflow-hidden bg-yellow-900 lg:flex-row ">
+      <div className="flex w-full lg:max-w-fit xl:max-w-[548px]  justify-center rounded-[20px] bg-white-A700 px-[27px] pb-8 pt-[27px]  sm:p-5">
         <div className="flex w-full flex-col items-start gap-[11px]">
-          <Text size="5xl" as="p" className="!text-[22.82px] font-medium">
-            Partner Summary Snapshot
-          </Text>
+          <p className="subsection-heading-medium">Partner Summary Snapshot</p>
           <div className="flex items-center self-stretch justify-between gap-5">
             <div className="flex w-[50%] flex-col gap-4">
               <div className="flex  items-start gap-[15px] md:w-full">
                 <div className="h-[16px] w-[16px] rounded-lg bg-[#FF3B2E]" />
-                <Text size="3xl" as="p">
-                  # Partners
-                </Text>
+                <p className="regular-text"># Partners</p>
               </div>
               <div className="flex  items-start gap-[15px] md:w-full">
                 <div className="h-[16px] w-[16px] rounded-lg bg-yellow-900" />
-                <Text size="3xl" as="p">
-                  Lifetime Sales
-                </Text>
+                <p className="regular-text">Lifetime Sales</p>
               </div>
               <div className="flex items-start gap-[15px]">
                 <div className="h-[16px] w-[16px] rounded-lg bg-light_green-100" />
-                <Text size="3xl" as="p">
+                <p className="regular-text whiteSpace-nowrap">
                   Lifetime Referral Bonus
-                </Text>
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-start gap-3">
@@ -265,111 +104,89 @@ const Stats = () => {
           </div>
         </div>
       </div>
-      <div className="w-full 2xl:w1/2 flex-shrink-0 flex flex-1 flex-col items-start gap-[3px] rounded-[20px] bg-white-A700 px-[41px] pb-[35px] pt-[27px] md:self-stretch md:px-5 sm:p-5 overflow-auto">
-        <Text size="5xl" as="p" className="!text-[22.82px] font-medium">
-          Partner Summary Trends
-        </Text>
-        <div className="w-full h-full ">
-          <Chart
-            options={{
-              chart: {
-                height: 200,
-                // width: "100%",
-                type: "line",
-                zoom: {
+      <div className="w-full">
+        <div className="w-full 0  flex flex-1 flex-col items-start gap-[3px] rounded-[20px] bg-white-A700 px-[41px] pb-[35px] pt-[27px]  md:px-5 sm:p-5 ">
+          <p className="subsection-heading-medium">Partner Summary Trends</p>
+          <div className="w-full h-full ">
+            <Chart
+              options={{
+                chart: {
+                  height: 200,
+                  // width: "100%",
+                  type: "line",
+                  zoom: {
+                    enabled: false,
+                  },
+                },
+                dataLabels: {
                   enabled: false,
                 },
-              },
-              dataLabels: {
-                enabled: false,
-              },
-              stroke: {
-                width: [5, 7, 5],
-                curve: "straight",
-                dashArray: [0, 8, 5],
-              },
+                stroke: {
+                  width: [5, 7, 5],
+                  curve: "straight",
+                  dashArray: [0, 8, 5],
+                },
 
-              legend: {
-                tooltipHoverFormatter: function (val, opts) {
-                  return (
-                    val +
-                    " - <strong>" +
-                    opts.w.globals.series[opts.seriesIndex][
-                      opts.dataPointIndex
-                    ] +
-                    "</strong>"
-                  );
+                legend: {
+                  tooltipHoverFormatter: function (val, opts) {
+                    return (
+                      val +
+                      " - <strong>" +
+                      opts.w.globals.series[opts.seriesIndex][
+                        opts.dataPointIndex
+                      ] +
+                      "</strong>"
+                    );
+                  },
                 },
-              },
-              markers: {
-                size: 0,
-                hover: {
-                  sizeOffset: 6,
+
+                tooltip: {
+                  y: [
+                    {
+                      title: {
+                        formatter: function (val) {
+                          return val + " (mins)";
+                        },
+                      },
+                    },
+                    {
+                      title: {
+                        formatter: function (val) {
+                          return val + " per session";
+                        },
+                      },
+                    },
+                    {
+                      title: {
+                        formatter: function (val) {
+                          return val;
+                        },
+                      },
+                    },
+                  ],
                 },
-              },
-              xaxis: {
-                categories: [
-                  "01 Jan",
-                  "02 Jan",
-                  "03 Jan",
-                  "04 Jan",
-                  "05 Jan",
-                  "06 Jan",
-                  "07 Jan",
-                  "08 Jan",
-                  "09 Jan",
-                  "10 Jan",
-                  "11 Jan",
-                  "12 Jan",
-                ],
-              },
-              tooltip: {
-                y: [
-                  {
-                    title: {
-                      formatter: function (val) {
-                        return val + " (mins)";
-                      },
-                    },
-                  },
-                  {
-                    title: {
-                      formatter: function (val) {
-                        return val + " per session";
-                      },
-                    },
-                  },
-                  {
-                    title: {
-                      formatter: function (val) {
-                        return val;
-                      },
-                    },
-                  },
-                ],
-              },
-              grid: {
-                borderColor: "#f1f1f1",
-              },
-            }}
-            series={[
-              {
-                name: "John",
-                data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
-              },
-              {
-                name: "Mike",
-                data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
-              },
-              {
-                name: "Jess",
-                data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47],
-              },
-            ]}
-            type="line"
-            height={"100%"}
-            // width={"100%"}
-          />
+                grid: {
+                  // borderColor: "#f1f1f1",
+                },
+              }}
+              series={[
+                {
+                  name: "John",
+                  data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
+                },
+                {
+                  name: "Mike",
+                  data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
+                },
+                {
+                  name: "Jess",
+                  data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47],
+                },
+              ]}
+              type="line"
+              height={"100%"}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -400,7 +217,7 @@ const PageHeader = () => {
           </svg>
         </div>
         <Link
-          href={"/campaigns?add=true"}
+          href={"#"}
           className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-white-A700 bg-red-500_01"
         >
           <svg
@@ -424,41 +241,5 @@ const PageHeader = () => {
     </div>
   );
 };
-
-import { Description, Field, Label, Select } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import clsx from "clsx";
-import {
-  AddtoCartsIcon,
-  BrandReferralBonusIcon,
-  ClicksIcon,
-  CommissionIcon,
-  ConversionsIcon,
-  DetailPageViewsIcon,
-  DownNumberIcon,
-  SignalIcon,
-  UpNumbersIcon,
-} from "@/assets/icons";
-import CampaignsChart from "../campaigns/chart";
-
-function PSelect() {
-  return (
-    <div className="relative px-4 min-w-[200px] ml-auto">
-      <div className="relative">
-        <Select
-          className={clsx(
-            "mt-3 max-w-[180px] bg-white-A700 block w-full appearance-none rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
-            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
-          )}
-        >
-          <option value="active">Brand/Products</option>
-          <option value="paused">Brand/Products</option>
-          <option value="delayed">Brand/Products</option>
-          <option value="canceled">Brand/Products</option>
-        </Select>
-      </div>
-    </div>
-  );
-}
 
 export default Home;

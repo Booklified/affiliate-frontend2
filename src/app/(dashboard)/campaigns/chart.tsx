@@ -82,13 +82,8 @@ export const data = {
 
 const CampaignsChart = () => {
   return (
-    <div className="h-fit">
-      {/* End widget top bar */}
-
-      <div className="">
-        <Line options={options} data={data} />
-      </div>
-      {/* End  profile chart */}
+    <div className="h-fit w-full aspect-[1493/488] xl:mex-h-[488px] ">
+      <Line options={options} data={data} height={"100%"} />
     </div>
   );
 };

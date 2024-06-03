@@ -7,6 +7,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      containers: {
+        "2xs": "16rem",
+      },
       // screens: { md: { max: "1050px" }, sm: { max: "550px" } },
       screens: {
         "3xl": { min: "1720px" },
@@ -27,6 +30,23 @@ module.exports = {
         sm: "1px 1px 10px 0px #0000000c",
       },
       fontFamily: { inter: "Inter" },
+      fontSize: {
+        "large-heading": "49px",
+        "main-heading": "40px",
+        "section-heading": "37px",
+        "subsection-heading": "24px",
+        "subsection-heading-medium": "22px",
+        "subsection-heading-small": "22px",
+        "highlighted-text": "22px",
+        "highlighted-number-medium": "20px",
+        "regular-text-large": "20px",
+        "regular-text": "18px",
+        "small-text-medium": "15px",
+        "small-text": "14px",
+        "smaller-text": "12px",
+        "very-small-text": "10px",
+        "tiny-text": "7px",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
