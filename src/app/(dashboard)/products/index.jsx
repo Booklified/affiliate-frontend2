@@ -181,11 +181,11 @@ export default function WireframeProductsTwoPage() {
   };
   return (
     <div className="w-full overflow-hidden">
-      <div className="w-full h-full px-4 overflow-hidden">
+      <div className="w-full h-full overflow-hidden">
         <div className="mb-16">
           <ToolBar />
         </div>
-        <div className="!bg-[#fff] px-10 py-8 rounded-xl overflow-scroll w-full">
+        <div className="!bg-[#fff] px-2 lg:px-10 py-8 rounded-xl overflow-scroll w-full">
           {/* <div className="w-[2755px] bg-orange-200 h-10" /> */}
           <table
             style={{
@@ -202,7 +202,7 @@ export default function WireframeProductsTwoPage() {
                     <th
                       key={header.id}
                       className={`
-                      
+                      text-gray-500
                       pr-1
                    
                     
@@ -255,7 +255,9 @@ export default function WireframeProductsTwoPage() {
               })}
             </tbody>
           </table>
-          <TablePagination siblings={3} total={data.length} />
+        </div>
+        <div className="px-10 pb-8 bg-white-A700">
+          <TablePagination siblings={1} total={data.length || 0} />
         </div>
       </div>
       {searchParams.get("modal") == "set_private_commission" && (

@@ -116,7 +116,7 @@ export default function WireframeBillingPayment1OnePage() {
                           : "center",
                       }}
                       className={`
-                      
+                      text-gray-500
                       pr-1
                    
                     
@@ -169,6 +169,8 @@ export default function WireframeBillingPayment1OnePage() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="px-10 pb-8 bg-white-A700">
           <TablePagination siblings={1} total={billingsData.length || 0} />
         </div>
       </div>

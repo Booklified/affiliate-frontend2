@@ -13,6 +13,18 @@ const dropDownOptions = [
 
 export default function Header({ ...props }) {
   const pathname = usePathname();
+  const [origin, setOrigin] = React.useState("");
+
+  console.log("---origin", origin);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(
+        window?.location?.origin
+          ? window?.location?.origin + "/" + pathname
+          : ""
+      );
+    }
+  }, []);
 
   return (
     <header
@@ -42,11 +54,7 @@ export default function Header({ ...props }) {
       </SignedOut>
 
       <SignedIn>
-        <UserButton
-          afterSignOutUrl={`${
-            typeof window !== "undefined" ? window?.location?.origin : ""
-          }${pathname}`}
-        />
+        <UserButton afterSignOutUrl={origin} />
       </SignedIn>
     </header>
   );

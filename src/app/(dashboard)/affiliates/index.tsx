@@ -1,12 +1,5 @@
 "use client";
-import Wrapper from "@/components/Wrapper";
-import {
-  createColumnHelper,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { CloseSVG } from "../../../assets/images";
@@ -21,25 +14,11 @@ import {
 import { ReactTable } from "../../../components/ReactTable";
 import Sidebar11 from "../../../components/Sidebar11";
 import Link from "next/link";
-import {
-  leadGenerationsData,
-  contactTemplatesData,
-  agreementTemplatesData,
-  onboardingData,
-  AgreementTemplateType,
-  ContactTemplateType,
-  LeadGenerationType,
-  OnboardingType,
-  agreementTemplateColumns,
-  contactTemplateColumns,
-  leadGenerationColumns,
-  onboardingColumns,
-} from "./affiliatesColumns";
+
 import LeadGenerationTable from "./(tables)/lead-generation";
 import ContactTemplatesTable from "./(tables)/contact-templates";
 import AgreementTemplateTable from "./(tables)/agreement-templates";
 import OnboardingTable from "./(tables)/onboarding";
-import { it } from "node:test";
 
 export default function WireframeAffiliatesOnePage() {
   const searchParams = useSearchParams();

@@ -9,6 +9,7 @@ import MyDateRangePicker from "@/components/shared/dateRangePicker";
 import CampaignsChart from "../campaigns/chart";
 import SelectBrandAndProduct from "@/components/shared/selectBrandAndProduct";
 import ALLStats from "@/components/ALLStats";
+import { PartnerSummaryTrendsChart } from "@/components/charts/PartnerSummaryTrendsChart";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
       <div className="relative flex w-full isolate ">
         <div className="relative w-full py-5 bg-yellow-900 px-7 max-w-fit rounded-t-2xl reverseBorder">
           <div className="flex items-center gap-2">
-            <h3 className="main-heading text-yellbg-yellow-900 text-white-A700">
+            <h3 className="text-[32px] md:text[40px] font-bold text-yellbg-yellow-900 text-white-A700">
               Welcome, Mike!
             </h3>
           </div>
@@ -68,7 +69,9 @@ const Stats = () => {
     <div className="flex flex-col w-full gap-5 p-6 overflow-hidden bg-yellow-900 lg:flex-row ">
       <div className="flex w-full lg:max-w-fit xl:max-w-[548px]  justify-center rounded-[20px] bg-white-A700 px-[27px] pb-8 pt-[27px]  sm:p-5">
         <div className="flex w-full flex-col items-start gap-[11px]">
-          <p className="subsection-heading-medium">Partner Summary Snapshot</p>
+          <p className="font-medium text-lg md:text-[22px]">
+            Partner Summary Snapshot
+          </p>
           <div className="flex items-center self-stretch justify-between gap-5">
             <div className="flex w-[50%] flex-col gap-4">
               <div className="flex  items-start gap-[15px] md:w-full">
@@ -104,13 +107,22 @@ const Stats = () => {
           </div>
         </div>
       </div>
-      <div className="w-full">
-        <div className="w-full 0  flex flex-1 flex-col items-start gap-[3px] rounded-[20px] bg-white-A700 px-[41px] pb-[35px] pt-[27px]  md:px-5 sm:p-5 ">
-          <p className="subsection-heading-medium">Partner Summary Trends</p>
+      <div className="w-full ">
+        <div className="w-full 0  flex flex-1 flex-col items-start gap-[3px] rounded-[20px] bg-white-A700 p-4 xl:px-[41px] xl:pb-[35px] xl:pt-[27px]  md:px-5 sm:p-5 ">
+          <p className="px-2 font-medium text-lg md:text-[22px]">
+            Partner Summary Trends
+          </p>
           <div className="w-full h-full ">
+            {/* <PartnerSummaryTrendsChart /> */}
             <Chart
               options={{
+                legend: {
+                  show: false,
+                },
                 chart: {
+                  toolbar: {
+                    show: false,
+                  },
                   height: 200,
                   // width: "100%",
                   type: "line",
@@ -124,21 +136,21 @@ const Stats = () => {
                 stroke: {
                   width: [5, 7, 5],
                   curve: "straight",
-                  dashArray: [0, 8, 5],
+                  // dashArray: [0, 8, 5],
                 },
 
-                legend: {
-                  tooltipHoverFormatter: function (val, opts) {
-                    return (
-                      val +
-                      " - <strong>" +
-                      opts.w.globals.series[opts.seriesIndex][
-                        opts.dataPointIndex
-                      ] +
-                      "</strong>"
-                    );
-                  },
-                },
+                // legend: {
+                //   tooltipHoverFormatter: function (val, opts) {
+                //     return (
+                //       val +
+                //       " - <strong>" +
+                //       opts.w.globals.series[opts.seriesIndex][
+                //         opts.dataPointIndex
+                //       ] +
+                //       "</strong>"
+                //     );
+                //   },
+                // },
 
                 tooltip: {
                   y: [
@@ -167,7 +179,31 @@ const Stats = () => {
                 },
                 grid: {
                   // borderColor: "#f1f1f1",
+                  show: false,
                 },
+                xaxis: {
+                  axisBorder: {
+                    show: false,
+                  },
+                  axisTicks: {
+                    show: false,
+                  },
+                  labels: {
+                    show: false,
+                  },
+                },
+                yaxis: {
+                  axisBorder: {
+                    show: false,
+                  },
+                  axisTicks: {
+                    show: false,
+                  },
+                  labels: {
+                    show: false,
+                  },
+                },
+                colors: ["#FB7E10", "#FF3B2E", "#D3FAD6"],
               }}
               series={[
                 {

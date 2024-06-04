@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import React from "react";
 import "../styles/font.css";
 import "../styles/index.css";
+import { NextUIProvider } from "@nextui-org/react";
 
 function RootLayout({ children }) {
   return (
@@ -18,7 +19,9 @@ function RootLayout({ children }) {
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" />
         </head>
-        <body>{children}</body>
+        <body>
+          <NextUIProvider>{children}</NextUIProvider>
+        </body>
       </html>
     </ClerkProvider>
   );

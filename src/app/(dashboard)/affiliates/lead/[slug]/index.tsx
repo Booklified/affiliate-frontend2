@@ -125,13 +125,15 @@ const Metrics = () => {
 
 const PRogfile = () => {
   return (
-    <div className="flex-grow h-fit 2xl:h-full px-6  w-full flex-shrink-0 bg-white-A700 xl:max-w-[400px] py-[50px] flex rounded-3xl">
-      <div className="mx-auto 2xl:m-auto">
+    <div className="flex-grow h-full 2xl:h-full px-6  w-full flex-shrink-0 bg-white-A700 xl:max-w-[400px] py-[20px] xl:py-[50px] flex rounded-3xl">
+      <div className="flex flex-col justify-between h-full mx-auto 2xl:m-auto">
         <div className="ProfileBox">
-          <div className="profile">
+          <div className="scale-50 profile lg:scale-100">
             <img src="/images/user.png" />
           </div>
-          <h1 className="profileName">Mike Wazowski</h1>
+          <h1 className="!text-lg md:!text-2xl xl:!text-[40px] profileName">
+            Mike Wazowski
+          </h1>
           <div className="SocialBox">
             <p className="Social">
               <img src="/images/fb.png" />
@@ -149,10 +151,10 @@ const PRogfile = () => {
           <div>
             <ul className="AddressBox">
               <li className="addressIcon">
-                <span>
+                <span className="">
                   <img src="/images/phone.png" />
                 </span>
-                (205) 555-201
+                <span className="ml-10 mr-auto">(205) 555-201</span>
               </li>
               <li className="addressIcon">
                 <span>
@@ -169,12 +171,14 @@ const PRogfile = () => {
             </ul>
           </div>
         </div>
-        <div className="PartnerShip">
-          <div className="partnerLogo">
+        <div className="PartnerShip ">
+          <div className=" partnerLogo">
             <img src="/images/notes.png" className="partenerImg" />
           </div>
-          <div className="partnershipText">
-            <p>PartenerShip </p>
+          <div className="-ml-4 text-lg font-medium lg:text-2xl">
+            <p>
+              PartenerShip <br /> Agreement
+            </p>
           </div>
         </div>
       </div>

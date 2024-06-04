@@ -127,3 +127,8 @@ reverseBorder:after {
     inset 8px -8px  5px -5px
     ;
 }
+
+
+.picker{
+  max-width: 384px !important;
+}

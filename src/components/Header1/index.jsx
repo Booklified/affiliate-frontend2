@@ -10,13 +10,25 @@ import {
 } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
 
-export default function Header1({ showNotification, ...props }) {
+function Header1({ showNotification, ...props }) {
   const { user } = useUser();
   const { actor, userId, getToken } = useAuth();
-  console.log("---actor", actor);
-
+  const [origin, setOrigin] = React.useState("");
   const pathname = usePathname();
+
+  console.log("---origin", origin);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(
+        window?.location?.origin
+          ? window?.location?.origin + "/" + pathname
+          : ""
+      );
+    }
+  }, []);
+  console.log("---actor", actor);
 
   return (
     <header
@@ -25,7 +37,7 @@ export default function Header1({ showNotification, ...props }) {
     >
       <div className="flex justify-end items-center gap-[19px]  ">
         <SignedOut>
-          <SignInButton className="px-3 py-2 bg-yellow-900 rounded-md text-white-A700 ">
+          <SignInButton className="px-3 py-2 bg-yellow-900 rounded-md whitespace-nowrap text-white-A700 ">
             Sign in
           </SignInButton>
         </SignedOut>
@@ -90,13 +102,14 @@ export default function Header1({ showNotification, ...props }) {
           <span className="uppercase whitespace-nowrap">
             {user?.fullName ?? ""}
           </span>
-          <UserButton
-            afterSignOutUrl={`${
-              typeof window !== "undefined" ? window?.location?.origin : ""
-            }${pathname}`}
-          />
+          <UserButton afterSignOutUrl={origin} />
         </SignedIn>
       </div>
     </header>
   );
 }
+
+//dynamic export
+export default dynamic(() => Promise.resolve(Header1), {
+  ssr: false,
+});

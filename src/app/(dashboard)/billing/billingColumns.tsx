@@ -34,9 +34,7 @@ export const tableColumns = [
     cell: (cell) => {
       return (
         <div className="">
-          <Text size="8xl" as="p">
-            {cell?.getValue?.()}
-          </Text>
+          <p className="text-[14px]">{cell?.getValue?.()}</p>
         </div>
       );
     },
@@ -46,9 +44,7 @@ export const tableColumns = [
     cell: (cell) => {
       return (
         <div className="flex flex-col items-center gap-[42px] w-fit">
-          <Text size="8xl" as="p">
-            ${cell?.getValue?.().toFixed(2)}
-          </Text>
+          <p className="text-sm">${cell?.getValue?.().toFixed(2)}</p>
         </div>
       );
     },
@@ -64,7 +60,7 @@ export const tableColumns = [
         <div
           className={`flex w-fit mx-auto text-white-A700 rounded-xl justify-center items-center min-w-[146px] h-[25px] ${className} `}
         >
-          <p className="text-center">{cell?.getValue?.()}</p>
+          <p className="text-sm text-center">{cell?.getValue?.()}</p>
         </div>
       );
     },

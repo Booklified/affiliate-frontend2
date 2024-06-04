@@ -60,11 +60,14 @@ export const tableColumns = [
               width={54}
               height={56}
               alt="user"
-              className="h-[56px]"
+              className="h-[56px] scale-75 lg:scale-100"
             />
           </div>
           <div className="flex flex-col items-start">
-            <Text size="8xl" as="p" className="!text-indigo-300 underline ">
+            <Text
+              as="p"
+              className="!text-indigo-300 underline text-base lg:text-xl  "
+            >
               {cell?.row?.original?.name ?? ""}
             </Text>
             <Text size="3xl" as="p">

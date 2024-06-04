@@ -137,13 +137,13 @@ function ALLStats() {
   return (
     <div>
       <div className="relative flex w-full isolate ">
-        <div className="relative w-full px-3 pt-2 pb-5 lg:pt-5 lg:pb-10 lg:px-7 max-w-fit bg-white-A700 rounded-t-2xl reverseBorder">
+        <div className="relative w-full px-0 pt-2 pb-3 pr-1 lg:pt-3 lg:pb-6 lg:px-7 max-w-fit bg-white-A700 rounded-t-2xl reverseBorder">
           <div className="flex items-center gap-2">
             <div
               style={{
                 flexShrink: 0,
               }}
-              className="w-[46px] h-[46px] flex-shrink-0 rounded-full bg-yellow-900 flex items-center justify-center"
+              className="w-[46px] h-[46px] flex-shrink-0 rounded-full bg-yellow-900 flex items-center justify-center scale-50 xl:scale-100 sm:scale-75"
             >
               {selectedItem?.icon}
             </div>
@@ -176,10 +176,10 @@ function ALLStats() {
                   href={getLink(item)}
                   scroll={false}
                   key={index}
-                  className="lg:px-5 lg:py-2.5 px-2 py-2 border border-black-900 rounded-xl"
+                  className="lg:px-5 lg:py-2.5 px-0 pr-1  py-2 border border-black-900 rounded-2xl"
                 >
                   <div className="flex items-center gap-2 white-space-nowrap">
-                    <div className="w-[46px] h-[46px] rounded-full bg-white-A700 flex items-center justify-center">
+                    <div className="w-[46px] h-[46px] rounded-full bg-white-A700 flex items-center justify-center scale-50 xl:scale-100 sm:scale-75">
                       {item.icon}
                     </div>
                     <div>
@@ -220,9 +220,7 @@ function ALLStats() {
       </div>
 
       <div className="w-full p-6 rounded-b-lg rounded-tr-lg bg-white-A700">
-        <Text size="lg" as="p">
-          Trends
-        </Text>
+        <p className="lg:!text-[37px] !text-[32px] font-medium">Trends</p>
         <CampaignsChart />
       </div>
     </div>
