@@ -137,49 +137,60 @@ function ALLStats() {
   return (
     <div>
       <div className="relative flex w-full isolate ">
-        <div className="relative w-full px-0 pt-2 pb-3 pr-1 lg:pt-3 lg:pb-6 lg:px-7 max-w-fit bg-white-A700 rounded-t-2xl reverseBorder">
-          <div className="flex items-center gap-2">
-            <div
-              style={{
-                flexShrink: 0,
-              }}
-              className="w-[46px] h-[46px] flex-shrink-0 rounded-full bg-yellow-900 flex items-center justify-center scale-50 xl:scale-100 sm:scale-75"
-            >
-              {selectedItem?.icon}
-            </div>
-            <div>
-              <p className="text-[9px] text-gray-500">
-                {selectedItem?.name ?? ""}
-              </p>
-              <p className="text-xl text-black-900">
-                {selectedItem?.amount ?? ""}
-              </p>
-              <span className="flex items-center gap-1">
-                <UpNumbersIcon />
-                <p className="text-[8px]">
-                  <span className="text-yellow-900">
-                    {" "}
-                    {selectedItem?.change ?? ""}
-                  </span>
-                  This month
+        {false && (
+          <div className="relative w-full px-0 pt-2 pb-3 pr-1 lg:pt-3 lg:pb-6 lg:px-7 max-w-fit bg-white-A700 rounded-t-2xl reverseBorder">
+            <div className="flex items-center gap-2">
+              <div
+                style={{
+                  flexShrink: 0,
+                }}
+                className="w-[46px] h-[46px] flex-shrink-0 rounded-full bg-yellow-900 flex items-center justify-center scale-50 xl:scale-100 sm:scale-75"
+              >
+                {selectedItem?.icon}
+              </div>
+              <div>
+                <p className="text-[9px] text-gray-500">
+                  {selectedItem?.name ?? ""}
                 </p>
-              </span>
+                <p className="text-xl text-black-900">
+                  {selectedItem?.amount ?? ""}
+                </p>
+                <span className="flex items-center gap-1">
+                  <UpNumbersIcon />
+                  <p className="text-[8px]">
+                    <span className="text-yellow-900">
+                      {" "}
+                      {selectedItem?.change ?? ""}
+                    </span>
+                    This month
+                  </p>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="relative flex items-center flex-grow gap-2 pl-5 overflow-x-scroll bg-indigo-50">
+        )}
+        <div className="relative flex items-center flex-grow gap-2 overflow-x-scroll bg-indigo-50">
           {statDdata
-            .filter((item) => item?.param !== view)
+            // .filter((item) => item?.param !== view)
             .map((item, index) => {
               return (
                 <Link
                   href={getLink(item)}
                   scroll={false}
                   key={index}
-                  className="lg:px-5 lg:py-2.5 px-0 pr-1  py-2 border border-black-900 rounded-2xl"
+                  style={{
+                    background: selectedItem == item ? "white" : "none",
+                  }}
+                  className={` ${
+                    selectedItem == item ? "" : "border border-black-900"
+                  } lg:px-5 lg:py-2.5 px-0 pr-1  py-2  rounded-2xl`}
                 >
                   <div className="flex items-center gap-2 white-space-nowrap">
-                    <div className="w-[46px] h-[46px] rounded-full bg-white-A700 flex items-center justify-center scale-50 xl:scale-100 sm:scale-75">
+                    <div
+                      className={` ${
+                        selectedItem == item ? "bg-yellow-900" : "bg-white-A700"
+                      } w-[46px] h-[46px] rounded-full  flex items-center justify-center scale-50 xl:scale-100 sm:scale-75`}
+                    >
                       {item.icon}
                     </div>
                     <div>

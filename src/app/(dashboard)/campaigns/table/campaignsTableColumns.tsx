@@ -1,7 +1,7 @@
 import { Img, Text } from "@/components";
 import { Row, Table, createColumnHelper } from "@tanstack/react-table";
 import Image from "next/image";
-import { HTMLProps, useEffect, useRef } from "react";
+import { HTMLProps, useEffect, useRef, useState } from "react";
 
 import * as z from "zod";
 
@@ -31,28 +31,67 @@ export const tableColumns = [
       );
     },
     cell: (cell) => {
+      const [isEdit, setIsEdit] = useState(false);
+      const [value, setValue] = useState(cell.row.original.domain);
       console.log(cell.row.original.domain);
       return (
         <div className="flex flex-col gap-1">
-          <button className="flex items-center gap-1 px-3 py-1 border rounded-full w-fit border-black-900">
-            {cell.row.original.domain}
-            <svg
-              width="7"
-              height="7"
-              viewBox="0 0 7 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div
+            style={{
+              borderColor: isEdit ? "blue" : "",
+            }}
+            className="flex items-center gap-1 px-3 py-1 border rounded-full w-fit border-black-900"
+          >
+            {!isEdit && <p className="whitespace-nowrap">{value}</p>}
+            {isEdit && (
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+            )}
+            <button
+              className="flex-shrink-0"
+              onClick={() => {
+                setIsEdit(!isEdit);
+              }}
             >
-              <path
-                d="M4.45003 1.40997C4.91003 1.86997 5.37003 2.32998 5.83003 2.78998C5.80003 2.81998 5.77001 2.85 5.74001 2.88C4.61 4.01 3.47004 5.15003 2.34004 6.28003C2.28004 6.34003 2.18999 6.38997 2.09999 6.40997C1.61999 6.53997 1.14 6.65002 0.669998 6.77002C0.499998 6.81002 0.420037 6.74 0.460037 6.56C0.580037 6.07 0.700032 5.57002 0.830032 5.08002C0.840032 5.03002 0.879988 4.96999 0.909988 4.92999C2.06999 3.75999 3.23004 2.6 4.40004 1.44C4.41004 1.43 4.43002 1.42002 4.44002 1.40002L4.45003 1.40997Z"
-                fill="#8F8F8F"
-              />
-              <path
-                d="M6.23999 2.37002C5.78999 1.92002 5.32999 1.46001 4.85999 0.990011C5.04999 0.810011 5.23 0.610023 5.44 0.440023C5.69 0.240023 6.05999 0.280021 6.29999 0.500021C6.45999 0.640021 6.6 0.790033 6.75 0.950033C6.98 1.21003 7.00002 1.59 6.77002 1.85C6.60002 2.04 6.40998 2.20002 6.22998 2.37002H6.23999Z"
-                fill="#8F8F8F"
-              />
-            </svg>
-          </button>
+              {!isEdit && (
+                <svg
+                  width="7"
+                  height="7"
+                  viewBox="0 0 7 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.45003 1.40997C4.91003 1.86997 5.37003 2.32998 5.83003 2.78998C5.80003 2.81998 5.77001 2.85 5.74001 2.88C4.61 4.01 3.47004 5.15003 2.34004 6.28003C2.28004 6.34003 2.18999 6.38997 2.09999 6.40997C1.61999 6.53997 1.14 6.65002 0.669998 6.77002C0.499998 6.81002 0.420037 6.74 0.460037 6.56C0.580037 6.07 0.700032 5.57002 0.830032 5.08002C0.840032 5.03002 0.879988 4.96999 0.909988 4.92999C2.06999 3.75999 3.23004 2.6 4.40004 1.44C4.41004 1.43 4.43002 1.42002 4.44002 1.40002L4.45003 1.40997Z"
+                    fill="#8F8F8F"
+                  />
+                  <path
+                    d="M6.23999 2.37002C5.78999 1.92002 5.32999 1.46001 4.85999 0.990011C5.04999 0.810011 5.23 0.610023 5.44 0.440023C5.69 0.240023 6.05999 0.280021 6.29999 0.500021C6.45999 0.640021 6.6 0.790033 6.75 0.950033C6.98 1.21003 7.00002 1.59 6.77002 1.85C6.60002 2.04 6.40998 2.20002 6.22998 2.37002H6.23999Z"
+                    fill="#8F8F8F"
+                  />
+                </svg>
+              )}
+              {isEdit && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-3"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 12.75 6 6 9-13.5"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
           {cell?.getValue?.()}
         </div>
       );

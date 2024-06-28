@@ -2,6 +2,7 @@ import React from "react";
 import Page from ".";
 import Header1 from "@/components/Header1";
 import Link from "next/link";
+import { Breadcrumb } from "antd";
 
 export const metadata = {
   title: "Toocan",
@@ -12,7 +13,15 @@ export const metadata = {
 export default function WireframeAffiliatesOnePage() {
   return (
     <div className="overflow-hidden md:w-full">
-      <div className="flex flex-col-reverse w-full py-2 font-bold md:flex-row">
+      <Breadcrumb
+        className="my-3"
+        items={[
+          {
+            title: "Affiliates",
+          },
+        ]}
+      />
+      <div className="flex flex-col-reverse w-full pb-2 font-bold md:flex-row">
         <div className="flex-grow pt-3 pl-2 text-2xl text-black-900 whitespace-nowrap">
           <Link
             href={"/affiliates?add=true"}
